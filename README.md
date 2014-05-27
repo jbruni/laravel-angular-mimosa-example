@@ -1,16 +1,16 @@
 laravel-angular-mimosa-example
 ==============================
 
-This is am application which uses:
+This is an application which uses:
 
-- Laravel 4 (PHP framework) for server-side / back-end
-- AngularJS for client-side / front-end
-- RequireJS / AMD to organize code and lazy load resources (front-end)
-- Mimosa as front-end build tool
+- **Laravel 4** (PHP framework) for server-side / back-end
+- **AngularJS** for client-side / front-end
+- **RequireJS** / AMD to organize code and lazy load resources (front-end)
+- **Mimosa** as front-end build tool
 
-While in development, code is not minified, files are separated.
+While in development, code is not minified, files are separated, app load time is fast as everything is lazily loaded by RequireJS - simple and good to work.
 
-After Mimosa build, with minification and optimization, files are concatenated and minified, so the download size and number of requests are drastically reduced, not to mention the obfuscation of the JavaScript code.
+After Mimosa build, with minification and optimization, files are concatenated and minified, so the download size and number of requests are drastically reduced in production, not to mention the obfuscation of the JavaScript code.
 
 - `app` and `bootstrap` folders are Laravel-related (PHP / back-end)
 - [`app/views/layouts`](https://github.com/jbruni/laravel-angular-mimosa-example/tree/master/app/views/layouts) contains the *index.html* template, which is built and delivered by the server-side of the app
