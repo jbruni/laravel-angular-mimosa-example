@@ -32,3 +32,9 @@ It concatenates and makes **HTML files available as templates** in JavaScript fi
 It just **copies IMAGES** and common assets.
 
 It concatenates and minifies the JavaScript files, following `r.js` approach (requireJS optimization). It parses the code and finds out which JavaScript files are "entry points" ("modules"), and also detects which other specific JavaScript files are called from them (and thus necessary in the optimized "built" file). All this automatically. So, in the end we got **one minified/optimized JAVASCRIPT file** for each "separated single page app" in the project.
+
+### Important notice
+
+I have **removed** lots of parts of the back-end code (business rules classes, model classes, database migrations) - so it will **not work**! I've only published this repository here to show how I've been doing front-end code. Specifically, the usage of Mimosa as build tool, and the app code structure, with related HTML + CSS + IMAGES + JS grouped together in the same folder, and having the folders organized in a way that makes sense to the application.
+
+
