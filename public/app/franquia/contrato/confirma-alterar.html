@@ -1,0 +1,30 @@
+
+<div class="modal-header">
+    <h3>Confirmar Alterações</h3>
+</div>
+<div class="modal-body">
+    <p>Tem certeza que deseja alterar as configurações da franquia?</p>
+    <p>
+        <label>Dias de entrega:</label>
+        <span ng-class="{modificado: mudouConfig('dias_de_entrega')}">{{ opcoes.dias_de_entrega[contrato.dias_de_entrega] }}</span>
+        <br />
+        <label>Hor&aacute;rio de entrega:</label>
+        <span ng-class="{modificado: mudouConfig('horario_inicial_min') || mudouConfig('horario_final_max')}">das {{ contrato.horario_inicial_min }}am &agrave;s {{ contrato.horario_final_max }}am</span>
+        <br />
+        <label>Taxa de Entrega Mensal:</label>
+        <span ng-class="{modificado: mudouConfig('entrega_mensal')}">{{ contrato.entrega_mensal | currency }}</span>
+        <br />
+        <label>Taxa de Entrega Avulsa:</label>
+        <span ng-class="{modificado: mudouConfig('entrega_avulsa')}">{{ contrato.entrega_avulsa | currency }}</span>
+        <br />
+        <label>Valor Mínimo para Pedido:</label>
+        <span ng-class="{modificado: mudouConfig('pedido_minimo')}">{{ contrato.pedido_minimo | currency }}</span>
+        <br />
+        <label>Horário do Fechamento Diário:</label>
+        <span ng-class="{modificado: mudouConfig('horario_fechamento')}">{{ contrato.horario_fechamento }}:00 hs</span>
+    </p>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-primary" ng-click="$close()">Alterar</button>
+    <button class="btn btn-warning" ng-click="$dismiss()">Voltar</button>
+</div>

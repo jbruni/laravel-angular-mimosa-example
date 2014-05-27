@@ -1,0 +1,35 @@
+
+<div class="modal-header">
+    <h3>Faixas de Preço</h3>
+</div>
+<div class="modal-body">
+    <p>Produto: <b>{{ produtos.selecionado.nome }}</b></p>
+    <table class="precos">
+        <thead>
+            <tr>
+                <th colspan="2">Quantidade</th>
+                <th rowspan="2">Valor</th>
+                <th rowspan="2">&nbsp;</th>
+            </tr>
+            <tr>
+                <th>Min</th>
+                <th>Max</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="faixa in faixas">
+                <td>{{ faixa.qtde_min }}</td>
+                <td>{{ faixa.qtde_max }}</td>
+                <td>R$ <input type="text" money ng-model="faixa.valor" ng-pattern="/^[0-9]+\,[0-9]{2}$/" /> {{ produtos.selecionado.medida == 'unidade' ? 'a unidade' : 'o kilo' }}</td>
+                <td>
+                    <span class="action split" ng-click="novaFaixaDePreco($index)" popover="Criar nova faixa de preço" popover-placement="top" popover-trigger="mouseenter"></span>
+                    <span class="action remove" ng-click="excluirFaixaDePreco($index)" ng-show="faixas.length > 1" popover="Excluir esta faixa de preço" popover-placement="top" popover-trigger="mouseenter"></span>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-primary" ng-click="$close()">Salvar</button>
+    <button class="btn btn-warning" ng-click="$dismiss()">Cancelar</button>
+</div>

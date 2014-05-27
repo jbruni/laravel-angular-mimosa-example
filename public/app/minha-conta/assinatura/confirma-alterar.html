@@ -1,0 +1,26 @@
+
+<div class="modal-header">
+    <h3>Confirmar Alterações</h3>
+</div>
+<div class="modal-body">
+    <p>Tem certeza que deseja alterar as configurações de sua assinatura?</p>
+    <p>
+        <div ng-repeat="(id_produto, quantidade) in assinatura.quantidades" ng-show="(quantidade > 0) || (assinaturaOriginal.quantidades[id_produto] > 0)">
+            <label>{{ franquia.produtos[id_produto].nome }}:</label>
+            <span ng-class="{modificado: mudouQuantidadeItem(id_produto)}">{{ quantidade }} unidade{{ quantidade == 1 ? '' : 's' }}</span>
+        </div>
+        <br />
+        <label>Hor&aacute;rio:</label>
+        <span ng-class="{modificado: mudouConfig('horario_inicial') || mudouConfig('horario_final')}">das {{ assinatura.horario_inicial }} &agrave;s {{ assinatura.horario_final }}</span>
+        <br />
+        <label>Entrega:</label>
+        <span ng-class="{modificado: mudouConfig('dias_de_entrega')}">{{ franquia.opcoes_dias_de_entrega[assinatura.dias_de_entrega] }}</span>
+        <br />
+        <label>Valor da Assinatura:</label>
+        <span ng-class="{modificado: mudouConfig('valor')}">{{ assinatura.valor | currency }}</span>
+    </p>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-primary" ng-click="$close()">Alterar</button>
+    <button class="btn btn-warning" ng-click="$dismiss()">Voltar</button>
+</div>

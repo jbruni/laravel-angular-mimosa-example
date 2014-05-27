@@ -1,0 +1,252 @@
+@import '../minha-conta/minha-conta.css';
+@import 'financeiro/financeiro.css';
+@import 'produtos/produtos.css';
+
+.dashboard { min-height: 468px; }
+
+.dashboard.produtos {
+    padding-bottom: 18px;
+}
+
+.dashboard.produtos > div {
+    margin: 27px 19px 18px;
+    width: 952px;
+}
+
+
+/*** CONFIGURAÇÕES ***/
+
+.widget.resumo     { width: 505px; margin-left: 0; }
+.widget.valores    { width: 390px; margin-left: 16px; }
+.widget.dias       { width: 243px; }
+.widget.horario    { width: 657px; }
+.widget.fechamento { width: 280px; }
+.widget.actions    { width: 911px; }
+div.contrato .widget.actions { width: 621px; margin-top: 12px; }
+
+.widget.resumo .widget-body { height: 162px; padding: 11px 10px 0px 16px; }
+.widget.valores .widget-body { height: 162px; }
+.widget.dias .widget-body,
+.widget.fechamento .widget-body { height: 90px; }
+.widget.actions .widget-body  { height: 69px; padding-top: 15px; text-align: center; }
+
+.widget.valores p { margin: 1.5em 0px; }
+.widget.dias p { text-align: left; }
+.widget.horario p { margin-bottom: 3px; }
+
+.widget.valores label { width: 198px; }
+.widget.valores input, table.precos input {
+    background: #F7F7F7;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    border: 1px solid #CDCDCD;
+    -webkit-box-shadow: inset 0px 0px 3px rgba(200, 200, 200, 0.9);
+    -moz-box-shadow:    inset 0px 0px 3px rgba(200, 200, 200, 0.9);
+    box-shadow:         inset 0px 0px 3px rgba(200, 200, 200, 0.9);
+    width: 60px;
+    height: 25px;
+    font-family: Tahoma, Verdana, Segoe, sans-serif;
+    padding: 0px 3px;
+    color: #292929;
+}
+
+.seletor-horario { width: 529px; }
+
+
+/*** LISTA DE ENTREGA ***/
+
+table.totais {
+    border: 1px solid #ccc;
+    margin: 13px auto;
+}
+
+table.totais th,
+table.totais td {
+    padding: 1px 9px;
+    border: 1px solid #ddd;
+}
+
+table.totais tr.zebra {
+    background-color: #e9e9e9;
+}
+
+div.entrega h4 {
+    margin: 0px;
+    text-align: center;
+}
+
+div.entrega .acoes {
+    text-align: center;
+    margin: 5px 0px;
+}
+
+div.entrega .acoes a {
+    font-family: Tahoma, Verdana, Segoe, sans-serif;
+    font-size: 9pt;
+    color: #806725;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+div.entrega p.aberta {
+    text-align: center;
+    color: green;
+}
+
+div.lista {
+    overflow:hidden;
+    margin-bottom: 1.8em;
+}
+
+strong.entregador {
+    display: inline-block;
+    margin-top: 1em;
+    width: 100%;
+}
+
+strong.entregador button {
+    font-size: 81%;
+    float: right;
+    margin-bottom: 3px;
+}
+
+div.entregar {
+    margin-bottom: 1px;
+    padding: 5px 7px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    border: 1px solid #CDCDCD;
+    -webkit-box-shadow: inset 0px 0px 3px rgba(200, 200, 200, 0.9);
+    -moz-box-shadow:    inset 0px 0px 3px rgba(200, 200, 200, 0.9);
+    box-shadow:         inset 0px 0px 3px rgba(200, 200, 200, 0.9);
+    page-break-inside: avoid;
+}
+
+div.entregar.em-pausa {
+    border-color: red;
+    border-width: 2px;
+}
+
+div.entregar.tem-pedido {
+    border: 2px dashed blue;
+}
+
+div.entregar.pedido-avulso {
+    border: 3px dotted red;
+}
+
+div.entregar > ul {
+    margin: 0px;
+    padding: 0px;
+    list-style-position: inside;
+}
+
+div.entregar > span {
+    float: right;
+    font-size: 8pt;
+    display: block;
+}
+
+div.ocorrencias ul {
+    border: 1px solid #ccc;
+}
+
+div.ocorrencias ul li {
+    margin: 5px 0px;
+}
+
+span.assinante {
+    cursor: pointer;
+}
+
+span.assinante:hover {
+    background-color: #f6f6e0;
+}
+
+span.ocorrido {
+    color: #806725;
+    font-weight: bold;
+}
+
+ul.padaria {
+    width: 50%;
+    margin: 0px auto;
+    border-bottom: 1px solid #ababab;
+    padding: 9px 0px;
+    page-break-inside: avoid;
+    list-style-position: inside;
+}
+
+/*** ASSINANTES ***/
+
+div.assinante {
+    position: relative;
+    margin: 5px 9px;
+    padding: 7px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    border: 1px solid #CDCDCD;
+    -webkit-box-shadow: inset 0px 0px 3px rgba(200, 200, 200, 0.9);
+    -moz-box-shadow:    inset 0px 0px 3px rgba(200, 200, 200, 0.9);
+    box-shadow:         inset 0px 0px 3px rgba(200, 200, 200, 0.9);
+}
+
+div.assinante.aguardando {
+    background-color: #ffecd0;
+}
+
+div.assinante.ativado {
+    background-color: #ecffd0;
+}
+
+div.assinante span.contador {
+    font-size: 81%;
+    position: absolute;
+    bottom: 5px;
+    right: 10px;
+}
+
+div.assinante p {
+    margin: 0px;
+}
+
+div.assinante p > span {
+    display: inline-block;
+    width: 30%;
+}
+
+div.assinante a {
+    cursor: pointer;
+}
+
+div.assinante a.detalhe {
+    float: right;
+    text-decoration: none;
+    color: #806725;
+    font-weight: bold;
+    background-color: #e0e0e0;
+    width: 20px;
+    border: 1px solid #ccc;
+    display: inline-block;
+    text-align: center;
+}
+
+div.assinante a.detalhe:hover {
+    background-color: #d9d9d9;
+}
+
+div.detalhe {
+    font-size: 9pt;
+}
+
+div.filtros input.search-query {
+    margin: 0px 23px 9px 13px;
+}
+
+div.filtros input[type=checkbox] {
+    margin: 0px 5px 0px 12px;
+    cursor: pointer;
+}

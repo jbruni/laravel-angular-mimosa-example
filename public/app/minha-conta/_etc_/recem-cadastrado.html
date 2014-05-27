@@ -1,0 +1,12 @@
+
+<p class="sucesso" ng-show="(configuracao.status == 'S') && configuracao.recem_cadastrado">
+    Pré Cadastro realizado com sucesso! Entraremos em contato por e-mail ou telefone em no máximo 24 horas para formalizar sua assinatura.
+</p>
+
+<p class="info" ng-show="(configuracao.status == 'S') && !configuracao.recem_cadastrado">
+    Pré Cadastro realizado com sucesso! Entraremos em contato por e-mail ou telefone para formalizar sua assinatura.
+</p>
+
+<p class="info" ng-show="configuracao.status == 'E'">
+    Que pena, não entregamos ainda em sua região. Ajude-nos a chegar mais rápido informando seus vizinhos sobre este novo serviço.
+</p>

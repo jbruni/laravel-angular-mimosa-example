@@ -1,0 +1,107 @@
+div.financeiro .well {
+    background-color: #E9E9E9;
+    border-color: #D0D0D0;
+}
+
+div.financeiro .glyphicon {
+    margin: 0 7px;
+}
+
+div.financeiro table th {
+    font-weight: normal;
+    text-transform: uppercase;
+}
+
+div.financeiro table th,
+div.financeiro table td,
+table.ajustes tr td {
+    vertical-align: middle;
+}
+table.ajustes textarea {
+    resize: none;
+    width: 100%;
+    height: 45pt;
+}
+table.ajustes div.light {
+    font-weight: lighter;
+    width: 13em;
+    padding-top: 0.5em;
+}
+
+div.financeiro .info-box { width: 300px; background-color: #e2e2e2; margin-bottom: 2em; float: left; }
+div.financeiro .info-box p { margin: 0; }
+div.financeiro .info-box .cabecalho { height: 73px; }
+div.financeiro .info-box .cabecalho-1 { background-image: url('cabecalho_1.png'); }
+div.financeiro .info-box .cabecalho-2 { background-image: url('cabecalho_2.png'); }
+div.financeiro .info-box .cabecalho-3 { background-image: url('cabecalho_3.png'); }
+div.financeiro .info-box .info { padding: 9px; }
+
+div.financeiro .info-box .cabecalho div {
+    color: #FFF;
+    padding-right: 9px;
+    text-align: right;
+}
+
+div.financeiro .info-box .principal {
+    font-size: 25pt;
+    height: 45px;
+}
+
+div.financeiro .info-box .titulo {
+    font-size: 14pt;
+    height: 28px;
+}
+
+div.financeiro .info-box.central {
+    margin: 0 13px;
+}
+
+div.financeiro .info-box .btn {
+    padding: 0px 5px;
+    line-height: 1.3;
+    vertical-align: text-bottom;
+}
+
+div.financeiro .periodo,
+div.financeiro .filtro {
+    background-color: #F00;
+    color: #FFF;
+    min-height: 20px;
+    padding: 10px;
+    position: relative;
+    right: -9px;
+    top: -10px;
+    cursor: pointer;
+    text-transform: uppercase;
+}
+
+.opcoes-filtro button {
+    width: 100%;
+    text-transform: uppercase;
+    margin: 3px 0;
+}
+.opcoes-filtro button:hover {
+    background-color: #F00;
+    color: #FFF;
+}
+
+div.financeiro table td.valor-final:hover {
+    cursor: pointer;
+    background-color: #F0F0E0;
+}
+
+div.detalhes { padding: 9px; }
+span.marcado { color: #806725; }
+span.marcado-ok { color: green; }
+table.detalhes { margin: 12px 0px; width: 100%; }
+table.detalhes tr.cinzinha { background-color: #e2e2e2; }
+table.detalhes td > span { vertical-align: middle; }
+table.detalhes tfoot tr { border-top: 1px solid #e2e2e2; }
+table.detalhes tfoot th, .widget.fatura table tfoot td { text-align: right; }
+table.detalhes .valor { text-align: right; width: 100px; vertical-align: top; }
+table.detalhes th, table.detalhes td { padding: 3px 7px; }
+div.item { margin-top: 3px; font-size: 9pt; }
+
+div.popover { z-index: 1800; }
+
+#trigger-alendario-vencimento { width: 216px; }

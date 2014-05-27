@@ -1,0 +1,16 @@
+
+<div class="modal-header">
+    <h3>Assinatura Desativada</h3>
+</div>
+<div class="modal-body">
+    <p>Sua assinatura foi desativada, de acordo com sua solicitação.</p>
+    <p ng-if="desativacaoMensagem"><strong>Observação:</strong> {{ desativacaoMensagem }}</p>
+    <p ng-if="gerouFatura">
+        <strong>Importante:</strong>
+        Foi gerada uma fatura correspondente ao período ainda não quitado em que sua assinatura esteve ativa.
+        Acesse a fatura <a href="#/historico" ng-click="$dismiss()">no seu histórico</a>.
+    </p>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-success" ng-click="$dismiss()">Ok</button>
+</div>

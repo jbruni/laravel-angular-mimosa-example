@@ -1,0 +1,64 @@
+
+<form id="profile" name="profileForm" class="profile" ng-class="{submitted: profileForm.submitted}" novalidate>
+    <div class="esquerda">
+        <p>
+            <label for="cpf">CPF/CNPJ:</label><br />
+            <input id="cpf" name="cpf" type="text" ng-model="assinante.cpf" ng-minlength="11" ng-pattern="assinante.validation.cpf" placeholder="Digite seu CPF ou CNPJ" maxlength="18" />
+        </p>
+        <p>
+            <label for="conheceu">Como nos conheceu:</label><br />
+            <input id="conheceu" class="readonly" type="text" value="{{ opcoes.conheceu[assinante.extra.conheceu] }}" readonly />
+        </p>
+        <p>
+            <label>Onde será a entrega:</label><br />
+            <select class="pdm-select" name="tipo" ng-model="assinante.extra.tipo" ng-options="value as item.text for (value, item) in opcoes.tipo"></select>
+        </p>
+        <p>
+            <label for="local" ng-bind="opcoes.tipo[assinante.extra.tipo].label">Nome do condomínio:</label><br />
+            <input id="local" name="local" type="text" ng-model="assinante.extra.local" maxlength="255" />
+        </p>
+        <p>
+            <label for="cep">Digite o CEP:</label><br />
+            <input id="cep" name="cep" type="text" ng-model="assinante.endereco.cep" ng-pattern="assinante.endereco.validation.cep" required placeholder="CEP do local de entrega" maxlength="9" />
+        </p>
+    </div>
+    <div class="centro">
+        <p>
+            <label for="nome">Nome:</label><br />
+            <input id="nome" name="nome" type="text" ng-model="assinante.nome" ng-minlength="4" required placeholder="Digite seu nome completo" maxlength="255" />
+        </p>
+        <p>
+            <label for="logradouro">Endereço:</label><br />
+            <input id="logradouro" name="logradouro" type="text" ng-model="assinante.endereco.logradouro" required maxlength="255" />
+        </p>
+        <p>
+            <label for="numero">Número:</label><br />
+            <input id="numero" name="numero" type="text" ng-model="assinante.endereco.numero" required placeholder="Número do endereço" maxlength="108" />
+        </p>
+        <p>
+            <label for="complemento">Complemento:</label><br />
+            <input id="complemento" name="complemento" type="text" ng-model="assinante.endereco.complemento" maxlength="108" />
+        </p>
+        <p>
+            <label for="bairro">Bairro:</label><br />
+            <input id="bairro" name="bairro" type="text" ng-model="assinante.endereco.bairro" required maxlength="108" />
+        </p>
+    </div>
+    <div class="direita">
+        <p>
+            <label for="telefone">Telefone:</label><br />
+            <input id="telefone" name="telefone" type="text" ng-model="assinante.telefone" ng-pattern="assinante.validation.telefone" placeholder="Digite um telefone para contato" required maxlength="15" />
+        </p>
+        <h2>Alterar Senha</h2>
+        <p class="subheader">Senha de acesso ao sistema.</p>
+        <p>
+            <label for="senha">Nova senha:</label><br />
+            <input id="senha" name="senha" type="password" ng-model="assinante.senha" ng-minlength="5" placeholder="Digite sua nova senha" />
+        </p>
+        <p>
+            <label for="confirma-senha">Confirmação de senha:</label><br />
+            <input id="confirma-senha" name="confirma-senha" type="password" ng-model="assinante.confirmaSenha" ng-minlength="5" placeholder="Confirme sua nova senha" pw-check="senha" />
+        </p>
+        <p class="enviar"><input type="submit" value="" title="Alterar Cadastro" ng-click="alterarCadastro()" /></p>
+    </div>
+</form>

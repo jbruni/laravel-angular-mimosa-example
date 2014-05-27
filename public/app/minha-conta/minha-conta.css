@@ -1,0 +1,346 @@
+@import '../main.css';
+@import 'assinatura/assinatura.css';
+@import 'loja/loja.css';
+@import 'historico/historico.css';
+@import 'profile/profile.css';
+
+/* HEADER */
+
+div.pdm-header {
+    position: static;
+}
+
+div.pdm-header-bg,
+div.pdm-header-space {
+    display: none;
+}
+
+
+/* ADMIN */
+
+.admin {
+    width: 990px;
+    margin: 0px auto;
+    padding: 0px;
+    text-align: center;
+}
+
+.admin p {
+    margin: 1em 0px;
+}
+
+.admin .header {
+    position: relative;
+    text-align: left;
+}
+
+.admin h1 {
+    font-family: Tahoma, Verdana, Segoe, sans-serif;
+    color: #292929;
+    padding: 0px;
+    font-weight: normal;
+    font-size: 18pt;
+    letter-spacing: -1px;
+    margin: 15px 12px 6px;
+    min-height: 29px;
+}
+
+.admin label {
+    cursor: pointer;
+    font-weight: normal;
+    margin-bottom: 0px;
+}
+
+.admin ul.nav2 {
+    margin: 0px;
+    padding: 0px;
+    list-style: none inside;
+    font-family: Tahoma, Verdana, Segoe, sans-serif;
+    color: #806725;
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+    font-size: 9pt;
+    margin: 0px 12px 5px;
+}
+
+.admin ul.nav2 li {
+    margin: 0px;
+    padding: 0px;
+    display: inline-block;
+}
+
+.admin ul.nav2 a {
+    margin: 0px 2px;
+    color: #806725;
+    text-decoration: none;
+    padding-bottom: 13px;
+    background-repeat: no-repeat;
+    background-position: center bottom;
+}
+
+.admin ul.nav2 a.selected {
+    background-image: url('menu_selecionado.png');
+    position: relative;
+    z-index: 9;
+    text-decoration: underline;
+}
+
+.admin ul.nav2 a:hover {
+    text-decoration: underline;
+}
+
+.ng-hide {
+    display: none !important;
+}
+
+.dashboard,
+.widget-body {
+    -webkit-border-radius: 11px;
+    -moz-border-radius: 11px;
+    border-radius: 11px;
+    text-align: left;
+}
+
+.dashboard {
+    background: #F6F6F6;
+    font-family: Tahoma, Verdana, Segoe, sans-serif;
+    color: #292929;
+    margin-bottom: 30px;
+    -webkit-box-shadow: 0px 0px 7px rgba(100, 100, 100, 0.5);
+    -moz-box-shadow:    0px 0px 7px rgba(100, 100, 100, 0.5);
+    box-shadow:         0px 0px 7px rgba(100, 100, 100, 0.5);
+    position: relative;
+    min-height: 672px;
+}
+
+.dashboard > div {
+    margin: 27px 32px 18px;
+    width: 926px;
+}
+
+.widget {
+    float: left;
+    margin: 0px 6px 21px;
+}
+
+.widget h2 {
+    font-family: inherit;
+    font-weight: normal;
+    font-size: 13pt;
+    letter-spacing: -1px;
+    margin: 5px;
+}
+
+.widget h2.item {
+    padding-left: 23px;
+    background-repeat: no-repeat;
+    background-position: left center;
+}
+
+.widget .left {
+    float: left;
+}
+
+.widget .right {
+    float: right;
+}
+
+.widget-body {
+    background: #EEEEEE;
+    font-size: 10pt;
+    padding: 1px 15px 0px;
+    margin: 1px 2px;
+}
+
+.widget.ativa   { width: 660px; }
+.widget.pausa   { width: 235px; margin-left: 9px; }
+.widget.paes    { width: 911px; margin-bottom: 2px; }
+.widget.horario { width: 660px; }
+.widget.dias    { width: 350px; }
+.widget.resumo  { width: 537px; margin-left: 16px; }
+.widget.actions { width: 911px; }
+
+.widget.pausa .widget-body,
+.widget.paes .widget-body,
+.widget.horario .widget-body { height: 90px; }
+.widget.paes .widget-body { margin-bottom: 18px; }
+.widget.dias .widget-body { height: 132px; }
+.widget.actions .widget-body { height: 69px; padding-top: 15px; text-align: center; }
+.widget.resumo .widget-body { min-height: 132px; padding: 11px 10px 9px 16px; }
+
+.widget.pauza div.left { line-height: 27px; }
+
+.widget.paes p,
+.widget.horario p { margin-bottom: 3px; }
+.widget.dias p { text-align: justify; }
+
+.widget.ativa p.texto {
+    font-size: 10pt;
+    margin: 1em 26px;
+}
+
+.widget.ativa label {
+    font-size: 14pt;
+    vertical-align: middle;
+}
+
+.widget.resumo p { margin: 5px 0px; }
+.widget.resumo label { color: #987011; }
+.widget.resumo div.left { width: 256px; }
+.widget.resumo div.right { width: 240px; }
+
+.widget.resumo div.right {
+    background-image: url('../assine/setinha_valor.png');
+    background-repeat: no-repeat;
+    background-position: center 45px;
+}
+
+.widget.resumo div.right p {
+    font-size: 12px;
+    text-align: center;
+    line-height: 1.3em;
+}
+
+.widget.resumo div.right p.valor {
+    margin-top: 45px;
+    text-align: right;
+    margin-right: 9px;
+    color: #4f4f4f;
+}
+
+.widget.resumo div.right .oportunidade {
+    font-size: 23pt;
+    color: #292929;
+}
+
+.original { color: #907123; }
+.modificado { color: #bb3322; }
+
+.destaque {
+    font-size: 120%;
+    letter-spacing: -1px;
+    text-align: center;
+    color: #907123;
+}
+
+.item-nome {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    display: inline-block;
+    max-width: 225px;
+    overflow: hidden;
+    vertical-align: middle;
+}
+
+a.pagamento {
+    text-decoration: none;
+    color: inherit;
+}
+
+a.pagamento:hover {
+    text-decoration: underline;
+}
+
+button.confirmar {
+    border-color: #7C6022;
+    background-color: #a97f15;
+    background-image: -moz-linear-gradient(top,  #a97f15 0%, #88600c 100%);
+    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#a97f15), color-stop(100%,#88600c));
+    background-image: -webkit-linear-gradient(top,  #a97f15 0%,#88600c 100%);
+    background-image: -o-linear-gradient(top,  #a97f15 0%,#88600c 100%);
+    background-image: -ms-linear-gradient(top,  #a97f15 0%,#88600c 100%);
+    background-image: linear-gradient(to bottom,  #a97f15 0%,#88600c 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a97f15', endColorstr='#88600c',GradientType=0 );
+}
+
+button.desfazer {
+    color: #636363;
+    border-color: #CDCDCD;
+    background-color: #E8E8E8;
+}
+
+div.calendario input.data {
+    width: 216px;
+    font: inherit;
+    color: inherit;
+    border: 1px solid #cccccc;
+    padding: 0px 8px;
+    letter-spacing: -1px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    border-color: #3FBAF2;
+}
+
+/*** ALL ANIMATIONS ***/
+
+.animation.ng-enter, .animation.ng-leave {
+    -webkit-transition: 0.5s linear all;
+    -moz-transition: 0.5s linear all;
+    -o-transition: 0.5s linear all;
+    transition: 0.5s linear all;
+}
+
+.animation.ng-enter,
+.animation.ng-leave.ng-leave-active {
+    opacity: 0;
+}
+
+.animation.ng-leave,
+.animation.ng-enter.ng-enter-active {
+    opacity: 1;
+}
+
+
+/*** SLIDE ANIMATION ***/
+
+.slide.animation.ng-enter, .slide.animation.ng-leave {
+    position: absolute;
+}
+
+.slide.animation.ng-enter {
+    left: 990px;
+}
+
+.slide.animation.ng-leave ,
+.slide.animation.ng-enter.ng-enter-active {
+    left: 0;
+}
+
+.slide.animation.ng-leave.ng-leave-active {
+    left: -1008px;
+}
+
+
+/*** ACTION BUTTONS ANIMATION ***/
+
+.animation.ng-hide-add, .animation.ng-hide-remove {
+    -webkit-transition: 1.5s linear all;
+    -moz-transition: 1.5s linear all;
+    -o-transition: 1.5s linear all;
+    transition: 1.5s linear all;
+}
+
+.actions.ng-hide-add, .actions.ng-hide-remove {
+    display:block!important;
+}
+
+.actions.ng-hide-add.ng-hide-add-active,
+.actions.ng-hide-remove {
+    height: 0px; padding-top: 0px; opacity: 0;
+}
+
+.actions.ng-hide-add,
+.actions.ng-hide-remove.ng-hide-remove-active {
+    height: 69px; padding-top: 15px; opacity: 1;
+}
+
+
+/*** POPOVER ***/
+
+.popover { background-color: #ebebeb; }
+.popover.right .arrow:after { border-right-color: #ebebeb; }
+.popover.top .arrow:after { border-top-color: #ebebeb; }
+.popover.left .arrow:after { border-left-color: #ebebeb; }
+.popover.bottom .arrow:after { border-bottom-color: #ebebeb; }

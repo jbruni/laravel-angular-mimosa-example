@@ -1,0 +1,136 @@
+<div class="well well-sm">
+    Resumo
+    <div class="pull-right periodo" id="trigger-calendario-periodo" popover-template="{{ asset('franquia/financeiro/calendario-periodo.html') }}" popover-placement="bottom" popover-append-to-body="true">
+        <span class="glyphicon glyphicon-calendar"></span>
+        {{ faturas.periodo | date: "MMMM', 'y" }}
+        <span class="glyphicon glyphicon-chevron-down"></span>
+    </div>
+</div>
+
+<div class="info-box">
+    <div class="cabecalho cabecalho-1">
+        <div class="principal">{{ faturas.resumo.count_assinaturas }}</div>
+        <div class="titulo">Assinaturas</div>
+    </div>
+    <div class="info">
+        <p>
+            Fechamento do mês
+            <span class="pull-right">{{ faturas.periodoFim().format('L') }}</span>
+        </p>
+        <p>
+            Quantidade de pães/dia
+            <span class="pull-right">{{ faturas.resumo.produtos_dia }}</span>
+        </p>
+        <p>
+            Quantidade de pães/mês
+            <span class="pull-right">{{ faturas.resumo.produtos_mes }}</span>
+        </p>
+        <p>
+            Média de pães/assinante
+            <span class="pull-right">{{ faturas.resumo.produtos_assinante }}</span>
+        </p>
+        <p>
+            Ticket médio
+            <span class="pull-right">{{ faturas.resumo.assinatura_media | currency }}</span>
+        </p>
+    </div>
+</div>
+
+<div class="info-box central">
+    <div class="cabecalho cabecalho-2">
+        <div class="principal">{{ faturas.resumo.count_pedidos }}</div>
+        <div class="titulo">Compras na Loja</div>
+    </div>
+    <div class="info">
+        <p>
+            Maior compra
+            <span class="pull-right">{{ faturas.resumo.maior_compra | currency }}</span>
+        </p>
+        <p>
+            Ticket Médio
+            <span class="pull-right">{{ faturas.resumo.compra_media | currency }}</span>
+        </p>
+        <p>
+            Quantidade de produtos
+            <span class="pull-right">{{ faturas.resumo.count_produtos }}</span>
+        </p>
+        <p>
+            Total vendido
+            <span class="pull-right">{{ faturas.resumo.total_vendido | currency }}</span>
+        </p>
+        <p>
+            &nbsp;
+        </p>
+    </div>
+</div>
+
+<div class="info-box">
+    <div class="cabecalho cabecalho-3">
+        <div class="principal">{{ faturas.resumo.total_bruto | currency:"" }}</div>
+        <div class="titulo">Valor bruto</div>
+    </div>
+    <div class="info">
+        <p>
+            Valor pago
+            <span class="pull-right">{{ faturas.resumo.total_pago | currency }}</span>
+        </p>
+        <p>
+            Valor vencido
+            <button class="btn btn-xs btn-default" ng-click="faturas.filtro='vencidas'">ver</button>
+            <span class="pull-right">{{ faturas.resumo.total_vencido | currency }}</span>
+        </p>
+        <p>
+            Clientes em atraso
+            <button class="btn btn-xs btn-default" ng-click="faturas.filtro='vencidas'">ver</button>
+            <span class="pull-right">{{ faturas.resumo.count_vencidos }}</span>
+        </p>
+        <p>
+            Royalties
+            <span class="pull-right">{{ faturas.resumo.royalties | currency }}</span>
+        </p>
+        <p>
+            Taxa de Marketing
+            <span class="pull-right">{{ faturas.resumo.marketing | currency }}</span>
+        </p>
+    </div>
+</div>
+
+<div class="clearfix"></div>
+
+<div class="well well-sm">
+    Faturas {{ faturas.periodoLegivel() }}
+    <div class="pull-right periodo" id="trigger-opcoes-filtro" popover-template="{{ asset('franquia/financeiro/opcoes-filtros.html') }}" popover-placement="bottom" popover-append-to-body="true">
+        {{ opcoes.filtro[faturas.filtro] }}
+        <span class="glyphicon glyphicon-chevron-down"></span>
+    </div>
+</div>
+
+<table class="table table-striped table-bordered table-hovered">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nome / Empresa</th>
+            <th>Valor</th>
+            <th>Vencimento</th>
+            <th>Situação</th>
+            <th>Atraso</th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="id_fatura in faturas.registros | keys | orderBy:faturaSort" ng-init="fatura = faturas.registros[id_fatura]" ng-show="faturas.filtrar[faturas.filtro](fatura)">
+            <td once-text="fatura.id_fatura"></td>
+            <td once-text="fatura.nome"></td>
+            <td class="text-right valor-final" ng-bind="fatura.valor_final | currency" ng-click="mostrarDetalhes(id_fatura)"></td>
+            <td ng-bind="vcto(fatura.data_vencimento)"></td>
+            <td><span class="label" ng-class="{'label-success':fatura.situacao == 'paga', 'label-danger': fatura.situacao == 'vencida'}" ng-bind="fatura.situacao"></span></td>
+            <td ng-bind="fatura.dias_atraso + (fatura.dias_atraso > 0 ? (fatura.dias_atraso == 1 ? ' dia' : ' dias') : '')"></td>
+            <td>
+                <button ng-click="confirmaAtualizarFatura(fatura, 'editar')" ng-show="fatura.situacao != 'paga'" class="btn btn-xs btn-warning">Ajustar</button>
+                <button ng-click="confirmaAtualizarFatura(fatura, 'quitar')" ng-show="fatura.situacao != 'paga'" class="btn btn-xs btn-success">Quitar</button>
+                <button ng-click="confirmaAtualizarFatura(fatura, 'enviar')" ng-show="fatura.situacao != 'paga'" class="btn btn-xs btn-info">Enviar</button>
+                <button ng-click="confirmaAtualizarFatura(fatura, 'linkar')" ng-show="fatura.situacao != 'paga'" class="btn btn-xs btn-default"># Link</button>
+            </td>
+        </tr>
+    </tbody>
+</table>

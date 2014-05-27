@@ -1,0 +1,15 @@
+/bootstrap/compiled.php
+/vendor
+/public/app/vendor
+/public/dist
+/public/.mimosa
+/public/node_modules
+composer.phar
+composer.lock
+.DS_Store
+.buildpath
+.project
+.settings/
+public/upload/produtos/*
+!public/upload/produtos/placeholder.png
+!public/upload/produtos/{{ prod.id_produto }}.png

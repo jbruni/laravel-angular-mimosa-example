@@ -1,0 +1,100 @@
+@import '../main.css';
+
+/*** CONTATO ***/
+
+#contato {
+    font-family: Tahoma, Verdana, Segoe, sans-serif;
+    max-width: 990px;
+    margin: 0px auto;
+    text-align: left;
+}
+
+#contato form > div {
+    padding-bottom: 1.8em;
+}
+
+#contato .header {
+    background-image: url('texto_contato.png');
+    background-repeat: no-repeat;
+    width: 108px;
+    height: 70px;
+}
+
+#contato label {
+    font-size: 11pt;
+    letter-spacing: -1px;
+    text-shadow: 0px 0px 2px #fff;
+}
+
+#contato p {
+    margin: 0px auto 0.5em;
+}
+
+#contato .mensagem p {
+    width: 345px;
+}
+
+#contato p.destino {
+    position: relative;
+}
+
+#contato p.enviar {
+    text-align: center;
+    margin-top: 1.8em;
+}
+
+#contato textarea {
+    background-color: transparent;
+    background-image: url('input_mensagem.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    resize: none;
+    overflow: auto;
+    outline: 0px;
+    width: 345px;
+    height: 152px;
+    border: 0px;
+    margin: 0px;
+    padding: 9px;
+    font-family: Tahoma, Verdana, Segoe, sans-serif;
+    font-size: 10pt;
+    color: #292929;
+}
+
+@-moz-document url-prefix() {
+    #contato textarea { padding: 0px; }
+}
+
+#contato textarea:required,
+#contato textarea:invalid {
+    box-shadow:none;
+}
+
+#contato .dados input {
+    background: #ECECEC;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    border: 1px solid #CDCDCD;
+    -webkit-box-shadow: inset 0px 0px 3px rgba(200, 200, 200, 0.9);
+    -moz-box-shadow:    inset 0px 0px 3px rgba(200, 200, 200, 0.9);
+    box-shadow:         inset 0px 0px 3px rgba(200, 200, 200, 0.9);
+    width: 100%;
+    height: 30px;
+    font-family: Tahoma, Verdana, Segoe, sans-serif;
+    font-size: 9pt;
+    padding: 0px 7px;
+    outline: none;
+    margin-top: 1px;
+    color: #292929;
+}
+
+#contato .enviar input {
+    background-color: transparent;
+    background-image: url('botao_enviar_contato.png');
+    width: 172px;
+    height: 43px;
+    cursor: pointer;
+    display: inline-block;
+    border: 0px;
+}

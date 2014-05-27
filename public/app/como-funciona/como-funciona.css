@@ -1,0 +1,39 @@
+/*** COMO FUNCIONA ***/
+
+#como-funciona {
+    height: 384px;
+    width: 990px;
+    text-align: center;
+    margin: 0px auto;
+}
+
+#como-funciona .header {
+    background-image: url('como_funciona_header.png');
+    background-position: 0px 15px;
+    background-repeat: no-repeat;
+    padding: 15px 0px 25px;
+    width: 310px;
+    height: 84px;
+}
+
+#como-funciona .diagrama {
+    background-image: url('como_funciona_diagrama.png');
+    background-position: center center;
+    background-repeat: no-repeat;
+    width: 951px;
+    height: 195px;
+    display: inline-block;
+}
+
+#como-funciona p {
+    float: left;
+    width: 330px;
+    height: 90px;
+    margin: 0px;
+    padding: 9px 37px 0px 20px;
+    color: #444444;
+    font-size: 12pt;
+    font-family: Tahoma, Verdana, Segoe, sans-serif;
+    letter-spacing: -1px;
+    line-height: 21px;
+}

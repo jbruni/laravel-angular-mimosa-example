@@ -1,0 +1,51 @@
+
+<div class="filtros" ng-init="ativado = true; desativado = true; espera = true; indefinido = true">
+    <input type="text" ng-model="search.nome" class="search-query" placeholder="Busca por nome">
+    <input type="checkbox" ng-model="ativado" id="ativado"><label for="ativado">Liberado c/ assinatura ativa</label>
+    <input type="checkbox" ng-model="desativado" id="desativado"><label for="desativado">Liberado (assinatura desativada)</label>
+    <input type="checkbox" ng-model="espera" id="espera"><label for="espera">Em espera</label>
+    <input type="checkbox" ng-model="indefinido" id="indefinido"><label for="indefinido">Indefinido</label>
+</div>
+
+<div class="assinante" 
+     ng-repeat="assinante in values(assinantes) | filter:search | filter:filtro" 
+     ng-init="detalhes = false" 
+     ng-class="{aguardando: assinante.aguardando == 'S', ativado: assinante.configuracao.assinatura_ativa == '1'}">
+    <a class="detalhe" title="Mostrar/Ocultar detalhes" ng-click="detalhes = !detalhes">{{ detalhes ? '-' : '+' }}</a>
+    <span class="contador">{{ $index + 1 }}</span>
+    <p>
+        <span>&bull; {{ assinante.nome }}</span>
+        <span>&bull; Cadastrado em: {{ assinante.cadastrado_em }}</span>
+        <span>
+            &bull; Status: 
+            <a ng-click="definirStatus(assinante)" ng-if="assinante.aguardando == 'S'">Clique aqui para definir</a>
+            <a ng-click="definirStatus(assinante)" ng-if="assinante.aguardando == 'E'">Em espera</a>
+            <a ng-click="definirStatus(assinante)" ng-if="assinante.aguardando == 'N'">Entregas liberadas</a>
+        </span>
+    </p>
+    <p>&bull; {{ assinante.endereco }}</p>
+    <div class="detalhe" ng-show="detalhes">
+        <p>
+            <span>&bull; E-mail: {{ assinante.email }}</span>
+            <span>&bull; Fone: {{ assinante.telefone }}</span>
+            <span>&bull; CPF: {{ assinante.cpf }}</span>
+        </p>
+        <p>
+            <span>&bull; Conheceu: {{ assinante.extra.conheceu }}</span>
+            <span>&bull; Local: {{ assinante.extra.tipo }}</span>
+            <span>&bull; {{ assinante.extra.local }}</span>
+        </p>
+        <p>
+            <span>&bull; Entrega: {{ assinante.configuracao.horario }}</span>
+            <span>&bull; Dias: {{ assinante.configuracao.dias_de_entrega }}</span>
+            <span>&bull; Quantidade de produtos:</span>
+        </p>
+        <p>
+            <span>&bull; Entregas em pausa: {{ assinante.configuracao.pausado * 1 ? 'Sim' : 'Não' }}</span>
+            <span>&bull; Pausado até: {{ assinante.configuracao.pausado * 1 ? assinante.configuracao.data_pausado_ate : '' }}</span>
+            <span style="vertical-align: top">
+                <span ng-repeat="item in assinante.quantidades">- {{ item.produto }}: <strong>{{ item.quantidade }}</strong><br /></span>
+            </span>
+        </p>
+    </div>
+</div>

@@ -1,0 +1,49 @@
+
+<div class="modal-header">
+    <h3>Fazer Ajustes na Fatura</h3>
+</div>
+<div class="modal-body">
+    <p>Altere a <strong>data de vencimento</strong> ou o <strong>valor final</strong> da fatura através de um <strong>acréscimo</strong> ou <strong>desconto</strong>.</p>
+    <p>No "<strong>comentário da franquia</strong>" explique os motivos das alterações sendo feitas. Este comentário ficará visível no histórico para o assinante.</p>
+    <form>
+        <input type="hidden" name="id_fatura" value="{{ copia.id_fatura }}" />
+        <table class="table ajustes">
+            <tr ng-if="copia.comentario_assinante">
+                <th>Comentário do Assinante</th>
+                <td><textarea readonly>{{ copia.comentario_assinante }}</textarea></td>
+            </tr>
+            <tr>
+                <th>Data de Vencimento</th>
+                <td ng-init="copia.data_vencimento = moment(copia.data_vencimento, 'YYYY-MM-DD').toDate()">
+                    <div id="trigger-calendario-vencimento" class="calendario" popover-template="{{ asset('franquia/financeiro/calendario-vencimento.html') }}" popover-placement="bottom" popover-append-to-body="true">
+                        <input type="text" name="data_vencimento" class="data" value="{{ copia.data_vencimento | date:'fullDate' }}" readonly />
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <th>Valor Calculado</th>
+                <td>{{ copia.valor_calculado | currency }}</td>
+            </tr>
+            <tr>
+                <th>Valor de Acréscimo</th>
+                <td>R$ <input type="text" money ng-model="copia.valor_acrescimo" /></td>
+            </tr>
+            <tr>
+                <th>Valor de Desconto</th>
+                <td>R$ <input type="text" money ng-model="copia.valor_desconto" /></td>
+            </tr>
+            <tr>
+                <th>Valor Final</th>
+                <td>{{ valorFinal(copia.valor_calculado, copia.valor_acrescimo, copia.valor_desconto) | currency }}</td>
+            </tr>
+            <tr>
+                <th>Comentário da Franquia</th>
+                <td><textarea ng-model="copia.comentario_franquia"></textarea></td>
+            </tr>
+        </table>
+    </form>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-success" ng-click="$close(copia)">Salvar Alterações</button>
+    <button class="btn btn-warning" ng-click="$dismiss()">Cancelar</button>
+</div>

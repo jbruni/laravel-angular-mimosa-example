@@ -1,0 +1,12 @@
+
+<div class="modal-header">
+    <h3>Excluir Categoria</h3>
+</div>
+<div class="modal-body">
+    <p>Tem certeza que deseja excluir a categoria <span class="modificado">{{ categorias.selecionada.nome }}</span>?</p>
+    <p>Observação: os produtos <b>não</b> serão excluídos. Apenas a categoria será removida.</p>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-primary" ng-click="$close()">Excluir</button>
+    <button class="btn btn-warning" ng-click="$dismiss()">Voltar</button>
+</div>

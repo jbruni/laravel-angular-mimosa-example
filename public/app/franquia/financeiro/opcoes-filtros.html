@@ -1,0 +1,4 @@
+
+<div id="popover-opcoes-filtro" class="opcoes-filtro">
+    <button ng-repeat="filtro in opcoes.filtro | keys" ng-init="texto = opcoes.filtro[filtro]" type="button" class="btn btn-default" ng-click="faturas.filtro = filtro">{{ texto }}</button>
+</div>

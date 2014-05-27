@@ -1,0 +1,87 @@
+
+/* ASSINATURA */
+
+.widget h2.item.numero1 { background-image: url('1.png'); }
+.widget h2.item.numero2 { background-image: url('2.png'); }
+.widget h2.item.numero3 { background-image: url('3.png'); }
+.widget h2.item.numero4 { background-image: url('4.png'); }
+
+input.pausa {
+    background: #ECECEC;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    border: 1px solid #CDCDCD;
+    -webkit-box-shadow: inset 0px 0px 3px rgba(200, 200, 200, 0.9);
+    -moz-box-shadow:    inset 0px 0px 3px rgba(200, 200, 200, 0.9);
+    box-shadow:         inset 0px 0px 3px rgba(200, 200, 200, 0.9);
+    width: 41px;
+    height: 24px;
+    font-family: Tahoma, Verdana, Segoe, sans-serif;
+    font-size: 110%;
+    padding: 0px 3px;
+    vertical-align: middle;
+}
+
+div.checkbox {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background: url('botao_confirmar.png');
+    background-repeat: no-repeat;
+    background-position: center center;
+    cursor: pointer;
+    vertical-align: middle;
+}
+
+div.checkbox.checked {
+    background: url('botao_confirmar_checked.png');
+}
+
+.widget.pausa div.calendario button {
+    height: 28px;
+    letter-spacing: -1px;
+    padding: 5px;
+    vertical-align: middle;
+}
+
+.widget.pausa input.data {
+    width: 90px;
+    height: 28px;
+}
+
+div.seletor-horario .slider-range-center {
+    margin: 0px 11px 0px 7px;
+}
+
+div.seletor-horario .slider-range-right {
+    right: 6px;
+}
+
+button.confirmar,
+button.desfazer,
+a.link-loja {
+    color: white;
+    text-decoration: none;
+    padding: 5px 12px;
+    font-size: 9pt;
+    letter-spacing: -1px;
+    display: inline-block;
+    margin-top: 5px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    border: 1px solid #0480AA;
+    -webkit-box-shadow: inset 0px 0px 3px rgba(200, 200, 200, 0.9);
+    -moz-box-shadow:    inset 0px 0px 3px rgba(200, 200, 200, 0.9);
+    box-shadow:         inset 0px 0px 3px rgba(200, 200, 200, 0.9);
+}
+
+a.link-loja {
+    background-image: linear-gradient(bottom, #0083B7 23%, #00A5D3 62%);
+    background-image: -o-linear-gradient(bottom, #0083B7 23%, #00A5D3 62%);
+    background-image: -moz-linear-gradient(bottom, #0083B7 23%, #00A5D3 62%);
+    background-image: -webkit-linear-gradient(bottom, #0083B7 23%, #00A5D3 62%);
+    background-image: -ms-linear-gradient(bottom, #0083B7 23%, #00A5D3 62%);
+    background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0.23, #0083B7), color-stop(0.62, #00A5D3));
+}

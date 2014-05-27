@@ -1,0 +1,12 @@
+
+<div class="modal-header">
+    <h3>Pausa Finalizada</h3>
+</div>
+<div class="modal-body">
+    <p>Sua assinatura não está mais em pausa. Você continuará recebendo as entregas.</p>
+    <p ng-if="despausamentoMensagem"><strong>Observação: {{ despausamentoMensagem }}</strong></p>
+    <p>Você pode pausar novamente a qualquer momento.</p>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-success" ng-click="$dismiss()">Ok</button>
+</div>

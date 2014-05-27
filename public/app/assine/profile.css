@@ -1,0 +1,139 @@
+/*** SIGN UP *& PROFILE FORMS ***/
+
+#cadastre {
+    width: 990px;
+    margin: 0 auto;
+}
+
+#signup {
+    -webkit-border-radius: 11px;
+    -moz-border-radius: 11px;
+    border-radius: 11px;
+    overflow: hidden;
+    text-align: left;
+    background: #F6F6F6;
+    font-family: Tahoma, Verdana, Segoe, sans-serif;
+    color: #404040;
+    margin: 18px 0px 108px;
+    padding-bottom: 50px;
+    -webkit-box-shadow: 0px 0px 7px rgba(100, 100, 100, 0.5);
+    -moz-box-shadow:    0px 0px 7px rgba(100, 100, 100, 0.5);
+    box-shadow:         0px 0px 7px rgba(100, 100, 100, 0.5);
+}
+
+form.profile label {
+    font-weight: normal;
+}
+
+form.profile p {
+    margin: 1em 0px;
+}
+
+form.profile h2 {
+    font-size: 15pt;
+    font-weight: normal;
+    letter-spacing: -1px;
+    text-shadow: 0px 0px 2px #A0A0A0;
+    margin: 0px;
+    padding: 5px 0px 3px 0px;
+}
+
+form.profile p.subheader {
+    font-size: 10pt;
+    margin: 0px 0px 0.5em 2px;
+}
+
+form.profile > h2 { margin: 19px 0px 0px 45px; }
+form.profile > p.subheader { margin-left: 47px; }
+
+form.profile > div {
+    float: left;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+#signup > div {
+    width: 330px;
+    padding: 0px 37px;
+}
+
+#signup > div.esquerda {
+     padding: 0px 45px;
+}
+
+#signup > div.direita {
+    padding: 0px 15px;
+}
+
+#signup table {
+    margin: 27px auto 0;
+    width: 50%;
+}
+
+#profile > div {
+    width: 307px;
+    padding: 0px 22px;
+}
+
+form.profile div.esquerda > p {
+    width: 253px;
+    position: relative;
+}
+
+form.profile label {
+    font-size: 10pt;
+    cursor: pointer;
+}
+
+form.profile input[type=text],
+form.profile input[type=email],
+form.profile input[type=password] {
+    background: #ECECEC;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    border: 1px solid #CDCDCD;
+    -webkit-box-shadow: inset 0px 0px 3px rgba(200, 200, 200, 0.9);
+    -moz-box-shadow:    inset 0px 0px 3px rgba(200, 200, 200, 0.9);
+    box-shadow:         inset 0px 0px 3px rgba(200, 200, 200, 0.9);
+    width: 253px;
+    height: 28px;
+    font-family: Tahoma, Verdana, Segoe, sans-serif;
+    font-size: 9pt;
+    padding: 0px 7px;
+    outline: none;
+    margin-top: 1px;
+    color: #292929;
+}
+
+form.profile input[type=submit] {
+    background-color: transparent;
+    background-image: url('botao_enviar_cadastro.png');
+    width: 167px;
+    height: 40px;
+    cursor: pointer;
+    display: inline-block;
+    border: 0px;
+}
+
+form.profile input.readonly {
+    color: #808080;
+}
+
+form.profile p.enviar {
+    padding-top: 10px;
+}
+
+#profile select.ng-dirty + div,
+#profile .ng-dirty {
+    -webkit-box-shadow: 0px 0px 9px rgba(247, 225, 64, 0.82);
+    -moz-box-shadow:    0px 0px 9px rgba(247, 225, 64, 0.82);
+    box-shadow:         0px 0px 9px rgba(247, 225, 64, 0.82);
+}
+
+#profile.submitted .ng-invalid {
+    -webkit-box-shadow: 0px 0px 13px rgba(255, 0, 0, 0.2);
+    -moz-box-shadow:    0px 0px 13px rgba(255, 0, 0, 0.2);
+    box-shadow:         0px 0px 13px rgba(255, 0, 0, 0.2);
+}

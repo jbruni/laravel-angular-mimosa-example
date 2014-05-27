@@ -1,0 +1,56 @@
+
+/*** PRODUTOS E CATEGORIAS ***/
+
+.widget.produtos .widget-body { height: 593px; }
+.widget.produtos .ng-dirty { outline-color: green; border-color: green; }
+.widget.produtos .ng-invalid { outline-color: red; border-color: red; }
+
+.widget.categorias > div {
+    position: static;
+}
+
+.widget.produtos input,
+.widget.produtos select {
+    background: #F7F7F7;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    border: 1px solid #CDCDCD;
+    -webkit-box-shadow: inset 0px 0px 3px rgba(200, 200, 200, 0.9);
+    -moz-box-shadow:    inset 0px 0px 3px rgba(200, 200, 200, 0.9);
+    box-shadow:         inset 0px 0px 3px rgba(200, 200, 200, 0.9);
+    font-family: Tahoma, Verdana, Segoe, sans-serif;
+    font-size: 90%;
+    padding: 0px 3px;
+}
+
+.widget.produtos p.nome { height: initial; line-height: initial; }
+div.produto { height: 279px; }
+div.produto p.nome input { width: 207px; }
+div.produto p.ipreco { letter-spacing: -1px; }
+div.produto p.ipreco input { width: 54px; text-align: right; }
+div.produto p.assinavel input[type=checkbox] { position: relative; top: 2px; }
+
+p.categoria.incluido { background-color: #FAFAC9; border: 1px solid green; }
+
+table.precos td,
+table.precos th {
+    border: 1px solid #eee;
+    padding: 1px 5px;
+    text-align: center;
+}
+
+table.precos span.action {
+    cursor: pointer;
+    display: inline-block;
+    width: 32px;
+    height: 32px;
+}
+
+table.precos span.action.split {
+    background-image: url('tesoura.png');
+}
+
+table.precos span.action.remove {
+    background-image: url('lixeira.png');
+}

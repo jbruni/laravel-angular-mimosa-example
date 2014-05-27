@@ -1,0 +1,14 @@
+
+<div class="modal-header">
+    <h3>Confirmar Pausa na Entrega</h3>
+</div>
+<div class="modal-body">
+    <p>Tem certeza que deseja pausar as entregas?</p>
+    <p>Você irá voltar a receber as entregas somente após o dia {{ assinatura.data_pausado_ate | date:'mediumDate' }}.</p>
+    <p>O período pausado não será cobrado.</p>
+    <p>Fique tranquilo: a qualquer momento você pode "<strong>despausar</strong>", interrompendo o período de pausa quando quiser.</p>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-success" ng-click="$close()">Confirmar</button>
+    <button class="btn btn-warning" ng-click="$dismiss()">Voltar</button>
+</div>

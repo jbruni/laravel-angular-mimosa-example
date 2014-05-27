@@ -1,0 +1,18 @@
+
+<form ng-upload="uploadComplete(content, completed)" action="imagem-produto">
+    <div class="modal-header">
+        <h3>Upload de Imagem do Produto</h3>
+    </div>
+    <div class="modal-body">
+        <p>Selecione o arquivo de imagem no seu computador.</p>
+        <p>Produto: <b>{{ produtos.selecionado.nome }}</b></p>
+        <p><input type="file" name="imagem" /></p>
+        <br />
+        <div ng-show="upload.status" class="alert alert-info">{{ upload.status }}</div>
+    </div>
+    <div class="modal-footer">
+        <input type="hidden" name="id_produto" value="{{ produtos.selecionado.id_produto }}" />
+        <input class="btn btn-primary" type="submit" value="Enviar Arquivo" ng-click="upload.status = 'Enviando, por favor aguarde...'" />
+        <input class="btn btn-warning" type="button" value="Fechar" ng-click="$dismiss()" />
+    </div>
+</form>

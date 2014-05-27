@@ -1,0 +1,19 @@
+
+<div class="modal-header">
+    <h3>Falha na Atualização do Cadastro</h3>
+</div>
+<div class="modal-body">
+    <p ng-if="cadastroErro">
+        Houve um problema no processamento da sua alteração:<br />
+        <strong>{{ cadastroErro }}</strong><br />
+        Por favor, tente corrigir e enviar novamente.
+    </p>
+    <p ng-if="!cadastroErro">
+        Houve algum problema inesperado no processamento do seu cadastro.<br />
+        Por favor, tente novamente.
+    </p>
+    <p>Se o problema persistir, solicitamos que <a href="/#contato">entre em contato conosco</a>.</p>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-danger" ng-click="$dismiss()">Ok</button>
+</div>

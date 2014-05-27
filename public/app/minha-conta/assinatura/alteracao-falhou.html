@@ -1,0 +1,18 @@
+
+<div class="modal-header">
+    <h3>Falha ao Atualizar as Configurações da Assinatura</h3>
+</div>
+<div class="modal-body">
+    <p ng-if="alteracaoErro">
+        Houve um problema ao alterar as configurações da sua assinatura:<br />
+        <strong>{{ alteracaoErro }}</strong>
+    </p>
+    <p ng-if="!alteracaoErro">
+        Houve algum problema inesperado ao alterar as configurações da sua assinatura.<br />
+        Você pode tentar novamente.
+    </p>
+    <p>Caso seja necessário, <a href="/#contato">entre em contato conosco</a>.</p>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-danger" ng-click="$dismiss()">Ok</button>
+</div>

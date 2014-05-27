@@ -1,0 +1,142 @@
+
+<h4 style="text-align: center; margin-top: 0px; padding-top: 10px;">A loja está em manutenção. Aguarde.</h4>
+
+<!--
+<div class="loja">
+
+<div class="widget produtos">
+    <div class="widget-body">
+        <div class="produto" ng-repeat="prod in produtos.lista" ng-show="filterProdCateg(prod.id_produto)">
+            <p class="img"><img src="/upload/produtos/{{ prod.id_produto }}.png" /></p>
+            <p class="nome"><span>{{ prod.nome }}</span></p>
+            <p class="preco"><span class="valor">{{ quant * (prod.medida == 'grama' ? precoDoItem(prod, quant) / 1000 : precoDoItem(prod, quant)) | currency }}</span> <span class="quant">({{ quant }} {{ prod.medida }}{{ quant > 1 ? 's' : '' }})</span></p>
+            <p class="input">
+                <label>{{ prod.medida == 'grama' ? 'Gramas' : 'Qtd' }}:</label>
+                <input class="quant" type="number" ng-model="quant" ng-init="quant = (prod.medida == 'grama' ? 100 : 1)" step="{{ prod.medida == 'grama' ? 100 : 1 }}" min="{{ prod.medida == 'grama' ? 100 : 1 }}" max="{{ prod.medida == 'grama' ? 100000 : 1000 }}" />
+                <button class="adicionar" ng-click="adicionar(quant, prod)">Adicionar</button>
+            </p>
+        </div>
+    </div>
+</div>
+
+<div class="widget categorias">
+    <div>
+        <h2>Categorias:</h2>
+        <p ng-repeat="cat in categorias.lista" ng-class="{selected: categorias.selecionada.id_categoria == cat.id_categoria}" ng-click="categorias.selecionada = cat">{{ cat.nome }}</p>
+        <br />
+    </div>
+</div>
+
+<div class="widget cesta">
+    <h2>Cesta de Compras:</h2>
+    <div class="widget-body">
+        <div ng-if="cesta.itens.length == 0" style="text-align: center; margin-bottom: 13px;">
+            <em>Você ainda não adicionou produtos à sua cesta de compras.</em>
+        </div>
+        <div class="item-entrega" ng-repeat="(key, item) in cesta.itens">
+            <div class="quant">{{ item.quantidade }}{{ item.produto.medida == 'grama' ? 'gr' : ' un' }} ..............</div>
+            <div class="nome">{{ item.produto.nome }}{{ item.aviso }} .........................................................................................................</div>
+            <div class="total">{{ item.total | currency }}</div>
+            <div class="delete"><a title="Excluir item" ng-click="remover(key)"></a></div>
+        </div>
+        <div class="item-entrega soma">
+            <div class="quant"></div>
+            <div class="nome">Valor total:</div>
+            <div class="total">{{ cesta.sum() | currency }}</div>
+        </div>
+        <button class="pedido" ng-if="cesta.itens.length" ng-click="confirmarPedido()">Confirmar Pedido</button>
+        <div class="fazer-pedido">
+            <div id="calendario" class="data" popover-template="datepicker.html" popover-placement="top" popover-append-to-body="true">
+                <label>Selecione a data para entrega:</label>
+                <input type="text" class="data" readonly value="{{ cesta.data | date:'longDate' }}" />
+                <button class="btn"><i class="icon-calendar"></i></button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script id="datepicker.html" type="text/ng-template">
+    <div ng-model="cesta.data">
+        <datepicker show-weeks="false" starting-day="1" min="depoisDasOito ? afterTomorrow : tomorrow" max="afterMonth" date-disabled="desabilitarData(date, mode)"></datepicker>
+        <hr style="margin: 15px 0px; border-top-color: #CCCCCC" />
+        <p style="height: 26px">
+            <button type="button" class="btn btn-small btn-inverse" ng-click="selecionarAmanha()" ng-show="!depoisDasOito">Entregar Amanhã</button>
+            <button type="button" class="btn btn-small btn-info pull-right" ng-click="fecharCalendario()">Fechar</button>
+        </p>
+    </div>
+</script>
+
+<script id="confirmar-pedido.html" type="text/ng-template">
+    <div class="modal-header">
+        <h3>Confirmar Pedido</h3>
+    </div>
+    <div class="modal-body">
+        <p>Tem certeza que quer receber estes produtos na data indicada abaixo?</p>
+        <div class="item-entrega" ng-repeat="(key, item) in cesta.itens">
+            <div class="quant">{{ item.quantidade }}{{ item.produto.medida == 'grama' ? 'gr' : ' un' }} ..............</div>
+            <div class="nome small">{{ item.produto.nome }}{{ item.aviso }} .........................................................................................................</div>
+            <div class="total">{{ item.total | currency }}</div>
+        </div>
+        <div class="item-entrega soma">
+            <div class="quant"></div>
+            <div class="nome small">Valor total:</div>
+            <div class="total">{{ cesta.sum() | currency }}</div>
+        </div>
+        <p>Data de entrega: {{ cesta.data | date:'fullDate' }}.</p>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-primary" ng-click="$close()">Confirmar</button>
+        <button class="btn btn-warning" ng-click="$dismiss()">Voltar</button>
+    </div>
+</script>
+
+<div class="widget pedidos" ng-if="pedidos.lista.length > 0">
+    <h2>Pedidos Confirmados:</h2>
+    <div class="widget-body">
+        <div class="confirmado" ng-repeat="(data, confirmados) in pedidos.confirmados" ng-show="confirmados.length > 0">
+            <p>
+                Pedidos confirmados para entrega 
+                <span class="bind">{{ data == hoje ? 'hoje' : (data == amanha ? 'amanhã' : 'em ' + data) }}</span>
+                das <span class="bind">{{ configuracao._original.horario_inicial }}</span>
+                às <span class="bind">{{ configuracao._original.horario_final }}</span>
+            </p>
+            <div ng-repeat="pedido in confirmados">
+                <button class="btn-plus" title="Mostrar pedido" ng-init="detalhes = false" ng-click="detalhes = !detalhes" ng-class="{opened: detalhes}"></button>
+                <div class="ident">Pedido nº <span class="bind">{{ pedido.id_pedido }}</span> efetuado no dia <span class="bind">{{ pedido.feito_dia }}</span> às <span class="bind">{{ pedido.feito_hora }}</span></div>
+                <div class="total">{{ pedido.total | currency }}</div>
+                <a class="cancelar" ng-hide="(pedido.data == hoje) || ((pedido.data == amanha) && depoisDasOito)" ng-click="confirmaCancelarPedido(pedido.data, $index)">Cancelar pedido</a>
+                <div class="item" ng-repeat="item in pedido.itens" ng-show="detalhes" ng-class="{ultimo: $last}">
+                    <span class="bind">{{ item.quantidade }}{{ item.medida == 'grama' ? 'g' : '' }}</span> {{ item.nome }} (<span class="bind">{{ item.total | currency }}</span>)
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script id="cancelar-pedido.html" type="text/ng-template">
+    <div class="modal-header">
+        <h3>Cancelar Pedido</h3>
+    </div>
+    <div class="modal-body">
+        <p>Tem certeza que quer cancelar este pedido?</p>
+        <p>Pedido nº <span class="bind">{{ pedidos.selecionado.id_pedido }}</span> efetuado no dia <span class="bind">{{ pedidos.selecionado.feito_dia }}</span> às <span class="bind">{{ pedidos.selecionado.feito_hora }}</span></p>
+        <div class="item-entrega" ng-repeat="item in pedidos.selecionado.itens">
+            <div class="quant">{{ item.quantidade }}{{ item.medida == 'grama' ? 'gr' : ' un' }} ..............</div>
+            <div class="nome small">{{ item.nome }}{{ item.aviso }} .........................................................................................................</div>
+            <div class="total">{{ item.total | currency }}</div>
+        </div>
+        <div class="item-entrega soma">
+            <div class="quant"></div>
+            <div class="nome small">Valor total:</div>
+            <div class="total">{{ pedidos.selecionado.total | currency }}</div>
+        </div>
+        <p>Data de entrega: {{ pedidos.selecionado.data == amanha ? 'amanhã' : pedidos.selecionado._data  | date:'fullDate' }}.</p>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-danger" ng-click="$close()">Cancelar</button>
+        <button class="btn btn-warning" ng-click="$dismiss()">Voltar</button>
+    </div>
+</script>
+
+</div>
+-->

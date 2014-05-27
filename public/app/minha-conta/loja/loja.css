@@ -1,0 +1,289 @@
+
+/* LOJA */
+
+.dashboard.loja {
+    padding-bottom: 18px;
+}
+
+.dashboard.loja > div {
+    margin: 27px 19px 18px;
+    width: 952px;
+}
+
+div.loja .widget {
+    float: right;
+    margin: 0px 0px 21px;
+}
+
+div.loja .widget h2 {
+    font-size: 12pt;
+    color: #93762A;
+}
+
+div.loja .widget-body {
+    font-size: 10pt;
+}
+
+.widget.produtos,
+.widget.cesta,
+.widget.pedidos { width: 760px; }
+
+.widget.categorias {
+    width: 190px;
+    overflow: visible;
+}
+
+.widget.categorias h2 {
+    margin-bottom: 1em;
+}
+
+.widget.categorias > div {
+    position: absolute;
+}
+
+.widget.categorias > div > p {
+    height: 36px;
+    width: 191px;
+    margin: 0px;
+    padding: 0px 0px 0px 18px;
+    line-height: 33px;
+    font-size: 11pt;
+    border-top: 1px solid transparent;
+    border-bottom: 1px solid transparent;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.widget.categorias p.selected {
+    border-top-color: #DDDDDD;
+    border-bottom-color: #DDDDDD;
+    background: #EEEEEE;
+    background-repeat: no-repeat;
+    background-position: left center;
+    background-image: url('categoria.png');
+}
+
+.widget.produtos .widget-body {
+    height: 468px;
+    padding: 11px 10px 0px 16px;
+    overflow-y: scroll;
+}
+
+.widget.produtos p { margin: 0px; }
+
+.widget.produtos p.nome {
+    height: 42px;
+    line-height: 42px;
+    margin-bottom: 3px;
+}
+
+.widget.produtos p.nome span {
+    display: inline-block;
+    line-height: 21px;
+    vertical-align: middle;
+}
+
+div.produto {
+    float: left;
+    width: 216px;
+    height: 216px;
+    margin: 0px 9px 9px;
+    overflow: hidden;
+    text-align: center;
+    font-family: Tahoma, Verdana, Segoe, sans-serif;
+    color: #616161;
+    font-size: 11pt;
+}
+
+div.produto p.img {
+    margin: 7px 0px 0px;
+    width: 216px;
+    height: 98px;
+    line-height: 92px;
+    overflow: hidden;
+    background-image: url('bg_foto_produto.png');
+    background-position: center top;
+    background-repeat: no-repeat;
+}
+
+div.produto p.img span {
+    display: block;
+    width: 100px;
+    height: 98px;
+    line-height: 92px;
+    overflow: hidden;
+    margin: 0px 58px;
+}
+
+div.produto p.preco {
+    line-height: 21px;
+    margin-bottom: 5px;
+}
+
+div.produto p.preco span.valor {
+    vertical-align: middle;
+    color: #93762A;
+    font-size: 12pt;
+}
+
+div.produto p.preco span.quant {
+    vertical-align: middle;
+    font-size: 9pt;
+    letter-spacing: -1px
+}
+
+div.adicionais label,
+div.produto label {
+    font-size: 9pt;
+}
+
+div.adicionais input.quant,
+div.produto input.quant {
+    width: 55px;
+    border: 1px solid #CCCCCC;
+    background-color: white;
+    font-size: 9pt;
+    height: 23px;
+    text-align: center;
+}
+
+button.pedido,
+div.adicionais button.adicionar,
+div.produto button.adicionar {
+    font-family: Tahoma, Verdana, Segoe, sans-serif;
+    background-color: #EEEEEE;
+    border: 1px solid #CCCCCC;
+    color: #616161;
+    font-size: 9pt;
+    height: 23px;
+    -webkit-box-shadow: 0px 0px 3px rgba(200, 200, 200, 0.9);
+    -moz-box-shadow:    0px 0px 3px rgba(200, 200, 200, 0.9);
+    box-shadow:         0px 0px 3px rgba(200, 200, 200, 0.9);
+}
+
+button.pedido {
+    vertical-align: middle;
+    text-transform: uppercase;
+    height: 30px;
+    -webkit-box-shadow: 0px 0px 5px 1px rgba(200, 200, 200, 0.5);
+    -moz-box-shadow:    0px 0px 5px 1px rgba(200, 200, 200, 0.5);
+    box-shadow:         0px 0px 5px 1px rgba(200, 200, 200, 0.5);
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    float: right;
+    margin: 3px 33px 0px 0px;
+}
+
+div.adicionais {
+    font-family: Tahoma, Verdana, Segoe, sans-serif;
+    color: #616161;
+    font-size: 9pt;
+    position: relative;
+    left: -3px;
+}
+
+.widget.cesta .widget-body,
+.widget.pedidos .widget-body {
+    padding: 18px;
+    font-family: Tahoma, Verdana, Segoe, sans-serif;
+    color: #616161;
+    font-size: 11pt;
+    letter-spacing: -1px;
+}
+
+.widget.pedidos p { margin: 0px; }
+span.bind { color: #90732A; }
+
+div.item-entrega {
+    clear:both;
+    height: 25px;
+    overflow: hidden;
+}
+
+div.item-entrega > div {
+    display: inline-block;
+    height: 25px;
+    overflow: hidden;
+    white-space: nowrap;
+    float: left;
+    margin-left: 5px;
+}
+
+div.item-entrega .quant { width: 72px; }
+div.item-entrega .nome { width: 531px; }
+div.item-entrega .nome.small { width: 351px; }
+div.item-entrega .delete { width: 18px; }
+div.item-entrega .delete a {
+    width: 18px;
+    height: 8px;
+    padding: 3px 0px;
+    cursor: pointer;
+    display: inline-block;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-image: url('cancelar.png');
+}
+div.item-entrega .total {
+    width: 81px;
+    letter-spacing: -1px;
+    text-align: right;
+    padding-right: 1px;
+}
+
+div.item-entrega.soma .nome { text-align: right; letter-spacing: -1px; }
+div.item-entrega.soma .total { color: #93762A; }
+
+.popover[content="datepicker.html"] {
+    overflow: hidden;
+    width: 340px;
+    max-width: 500px;
+}
+
+div.confirmado {
+    margin-bottom: 0.5em;
+}
+
+button.btn-plus {
+    height: 16px;
+    width: 16px;
+    background-color: #EEEEEE;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-image: url('btn_plus.png');
+    border: 1px solid #CCCCCC;
+    -webkit-box-shadow: 0px 0px 3px rgba(200, 200, 200, 0.9);
+    -moz-box-shadow: 0px 0px 3px rgba(200, 200, 200, 0.9);
+    box-shadow: 0px 0px 3px rgba(200, 200, 200, 0.9);
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    vertical-align: middle;
+}
+
+button.btn-plus.opened {
+    background-image: url('btn_minus.png');
+}
+
+div.confirmado .ident {
+    display: inline-block;
+    width: 450px;
+}
+
+div.confirmado .total {
+    display: inline-block;
+    width: 90px;
+    text-align: right;
+}
+
+div.confirmado .cancelar {
+    display: inline-block;
+    width: 150px;
+    text-align: right;
+    text-decoration: none;
+    color: #90732A;
+    cursor: pointer;
+}
+
+div.item { margin-left: 20px }
+div.ultimo.item { margin-bottom: 0.3em; }

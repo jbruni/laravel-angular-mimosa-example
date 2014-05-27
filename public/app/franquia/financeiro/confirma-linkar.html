@@ -1,0 +1,20 @@
+
+<div class="modal-header" ng-init="fatura.linkCopiado = false">
+    <h3>Link para Boleto desta Fatura</h3>
+</div>
+<div class="modal-body">
+    <p>Este é o link de acesso ao boleto para pagamento:</p>
+    <p><strong><a target="_blank" href="{{ fatura.link }}">{{ fatura.link }}</a></strong></p>
+    <br />
+    <div ng-if="!fatura.linkCopiado" class="alert alert-warning">
+        Clique abaixo em "<strong>Copiar</strong>" para armazenar o link na sua área de transferência.
+        Assim você pode "colar" facilmente onde quiser (CTRL+V).
+    </div>
+    <div ng-if="fatura.linkCopiado" class="alert alert-success">
+        Link copiado para a área de transferência (<em>clipboard</em>).
+    </div>
+</div>
+<div class="modal-footer" style="margin-top: 0">
+    <button class="btn btn-success" id="copiar-link" data-clipboard-text="{{ fatura.link }}" ng-init="copiarLink()">Copiar</button>
+    <button class="btn btn-warning" ng-click="$dismiss()">Fechar</button>
+</div>

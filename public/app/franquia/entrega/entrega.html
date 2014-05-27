@@ -1,0 +1,84 @@
+<h4>Entregas para {{ dataEntrega | date:'EEEE, dd/MM/yyyy' }}</h4>
+
+<div class="acoes">
+    <a id="trigger-calendario" popover-template="{{ asset('franquia/entrega/calendario.html') }}" popover-placement="bottom" popover-append-to-body="true">Mostrar outra data</a>
+    |
+    <a target="_blank" ng-click="imprimirProdutos()">Imprimir tabela de produtos</a>
+    |
+    <a target="_blank" ng-click="imprimirLista()">Imprimir lista de entrega</a>
+    |
+    <a target="_blank" ng-click="imprimirListaParaPadaria()">Imprimir lista para padaria</a>
+</div>
+
+<table class="totais" ng-if="lista.totais.length > 0">
+    <thead>
+        <tr>
+            <th>Produto</th>
+            <th>Quantidade</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="item in lista.totais" ng-class-odd="'zebra'">
+            <td>{{ item.produto }}</td>
+            <td>{{ item.quantidade }}</td>
+        </tr>
+    </tbody>
+</table>
+
+<p class="aberta" ng-if="lista.fechada === false">* Esta lista de entrega ainda está aberta. Só é possível mudar a ordem e selecionar entregadores após o fechamento. *</p>
+
+<div class="ocorrencias" ng-if="lista.ocorrencias.length > 0">
+
+    <strong>Ocorrências recentes:</strong>
+
+    <ul>
+        <li ng-repeat="registro in lista.ocorrencias">
+            Em <strong>{{ registro.data }}</strong>,
+            <span class="assinante" popover="{{ registro.assinante.endereco + ', fone: ' + registro.assinante.telefone }}" popover-trigger="mouseenter">{{ registro.assinante.nome }}</span> 
+            <span class="ocorrido">{{ ocorrencias[registro.ocorrencia] }}</span>.
+        </li>
+    </ul>
+
+</div>
+
+<div class="lista" ng-if="lista.pausados.length > 0">
+
+    <strong>Assinantes em pausa:</strong>
+
+    <div class="entregar em-pausa" ng-repeat="pausado in lista.pausados | orderBy:'nome'">
+        <span>{{ $index + 1 }}</span>
+        {{ pausado.nome }}<br />
+        {{ pausado.endereco }}<br />
+    </div>
+
+</div>
+
+<div class="lista">
+
+    <strong class="entregador" ng-repeat-start="(id_entregador, entregas) in lista.entregas | orderBy:'id_entregador'" data-id-entregador="{{ id_entregador }}">
+        <span ng-if="entregas.length > 0">
+            {{ entregadores[id_entregador] ? entregadores[id_entregador] : 'Sem entregador selecionado' }}:
+            <button ng-click="imprimirLista(id_entregador)">Imprimir</button>
+        </span>
+    </strong>
+
+    <div class="entregar" ng-repeat="entrega in entregas | orderBy:'ordenacao'" ng-class="{'tem-pedido': entrega.tem_pedido, 'pedido-avulso': entrega.avulsa == '1'}" data-id-entrega="{{ entrega.id_entrega }}" data-id-entregador="{{ id_entregador }}">
+        <span>
+            <select ng-disabled="!lista.fechada" ng-model="entrega.id_entregador" ng-options="value as label for (value, label) in entregadores" ng-change="mudaEntregador(entregas, $index)">
+                <option value="">Selecionar entregador</option>
+            </select>
+            <button ng-if="lista.fechada && !$first" ng-click="reordena(entregas, $index, -1)">&uarr;</button>
+            <button ng-if="lista.fechada && !$last" ng-click="reordena(entregas, $index, +1)">&darr;</button>
+            {{ entrega.ordenacao }}
+        </span>
+        {{ entrega.assinante.nome }}<br />
+        {{ entrega.assinante.endereco }}<br />
+        {{ entrega.horario }}<br />
+        <ul>
+            <li ng-repeat="produto in entrega.produtos">{{ produto }}</li>
+        </ul>
+    </div>
+
+    <span ng-repeat-end=""></span>
+
+</div>

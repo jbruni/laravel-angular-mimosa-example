@@ -1,0 +1,364 @@
+@charset "UTF-8";
+
+/*
+ * Main CSS stylesheet
+ * 
+ * - Support master layout
+ */
+
+/*** GERAL ***/
+
+html, body {
+    height: 100%;
+}
+
+body {
+    background-image: url('background.png');
+}
+
+body.homepage {
+    background-image: none;
+}
+
+.wait *, .wait {
+    cursor: wait !important;
+}
+
+#wrapper {
+    min-height: 100%;
+    height: auto;
+    /* Negative indent footer by its height */
+    margin: 0 auto -108px;
+    /* Pad bottom by footer height */
+    padding: 0 0 108px;
+}
+
+form.submitted .ng-invalid,
+form.submitted select.ng-invalid + div.ng-scope {
+    border-color: red !important;
+}
+
+.modal-header h3 {
+    margin-top: 0.3em;
+    margin-bottom: 0;
+}
+
+input {
+    outline: none;
+}
+
+/* http://stackoverflow.com/a/17402192/370290 */
+#body input:focus::-webkit-input-placeholder { color:transparent; }
+#body input:focus:-moz-placeholder { color:transparent; }
+#body input:focus::-moz-placeholder { color:transparent; }
+#body input:focus:-ms-input-placeholder { color:transparent; }
+
+.popover {
+    max-width: 286px;
+}
+
+/*** MENU ***/
+
+div.pdm-menu {
+    background-image: url('menu/bg_menu.png');
+    background-repeat: no-repeat;
+    background-position: center top;
+    width: 990px;
+    height: 172px;
+    margin: 0 auto;
+    padding: 0;
+}
+
+ul.pdm-menu {
+    margin: 0 auto;
+    padding: 0;
+    list-style: none inside;
+    text-align: center;
+    font-size: 0;
+    background-image: url('menu/bg_logo.png');
+    background-repeat: no-repeat;
+    background-position: center 5px;
+    background-color: transparent;
+    height: 172px;
+    width: 990px;
+}
+
+ul.pdm-menu li {
+    margin: 0;
+    padding: 0;
+    display: inline-block;
+    vertical-align: top;
+    width: 105px;
+    height: 108px;
+    position: relative;
+}
+
+ul.pdm-menu li.logo {
+    background-image: url('menu/logo.png');
+    background-repeat: no-repeat;
+    background-position: center 14px;
+    width: 254px;
+    height: 100px;
+}
+
+ul.pdm-menu li > a {
+    padding: 0;
+    width: 73px;
+    height: 33px;
+    margin: 45px 16px 0;
+    display: block;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+ul.pdm-menu li.logo > a {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+}
+
+ul.pdm-menu li a.home {
+    background-image: url('menu/home.png');
+}
+
+ul.pdm-menu li a.home:hover {
+    background-image: url('menu/home_hover.png');
+}
+
+ul.pdm-menu li a.como-funciona {
+    background-image: url('menu/como_funciona.png');
+}
+
+ul.pdm-menu li a.como-funciona:hover {
+    background-image: url('menu/como_funciona_hover.png');
+}
+
+ul.pdm-menu li a.assine {
+    background-image: url('menu/assine.png');
+    margin-left: 13px;
+}
+
+ul.pdm-menu li a.assine:hover {
+    background-image: url('menu/assine_hover.png');
+}
+
+ul.pdm-menu li a.duvidas {
+    background-image: url('menu/duvidas.png');
+    margin-right: 19px;
+}
+
+ul.pdm-menu li a.duvidas:hover {
+    background-image: url('menu/duvidas_hover.png');
+}
+
+ul.pdm-menu li a.contato {
+    background-image: url('menu/contato.png');
+}
+
+ul.pdm-menu li a.contato:hover {
+    background-image: url('menu/contato_hover.png');
+}
+
+ul.pdm-menu li a.minha-conta {
+    background-image: url('menu/minha_conta.png');
+}
+
+
+/*** LOGIN ***/
+
+form.minha-conta {
+    width: 213px;
+    height: 100px;
+    padding: 17px 0 19px;
+    margin: 0;
+    background-image: url('login/bg_menu_dropdown.png');
+    background-repeat: no-repeat;
+    background-position: center center;
+    position: absolute;
+    right: 3px;
+    top: 102px;
+    z-index: 900;
+}
+
+form.minha-conta p {
+    margin: 0;
+    padding: 0;
+    margin-right: 20px;
+    text-align: right;
+    height: 31px;
+    position: relative;
+}
+
+form.minha-conta input[type=text],
+form.minha-conta input[type=password] {
+    color: #7b7157;
+    font-family: Verdana, Geneva, sans-serif;
+    background-repeat: no-repeat;
+    background-position: center center;
+    width: 175px;
+    height: 25px;
+    border: 0;
+    padding: 0 5px 0 33px;
+    font-size: 10pt;
+    outline: none;
+}
+
+form.minha-conta input.email {
+    background-image: url('login/campo_email.png');
+}
+
+form.minha-conta input.senha {
+    background-image: url('login/campo_senha.png');
+    padding-right: 36px;
+}
+
+form.minha-conta input[type=submit] {
+    position: absolute;
+    right: 0;
+    top : 0;
+    border: 0;
+    margin: 0;
+    padding: 0;
+    width: 29px;
+    height: 25px;
+    background: transparent;
+    cursor: pointer;
+    outline: none;
+}
+
+form.minha-conta p.esqueci a {
+    font-family: Verdana, Geneva, sans-serif;
+    font-size: 8pt;
+    color: #a9a9a9;
+}
+
+form.minha-conta.erro input[type=text],
+form.minha-conta.erro input[type=password] {
+    outline: 1px solid red;
+}
+
+form.minha-conta.erro:after {
+    content: "E-mail ou Senha incorreto(s)";
+    background-color: #EBEBEB;
+    border: 1px solid #BBBBBB;
+    -webkit-border-radius: 7px 7px 7px 7px;
+    -moz-border-radius: 7px 7px 7px 7px;
+    border-radius: 7px 7px 7px 7px;
+    font-family: Verdana, Geneva, sans-serif;
+    font-size: 9pt;
+    color: #797979;
+    width: 220px;
+    height: 40px;
+    padding-top: 10px;
+    position: absolute;
+    left: -3px;
+    bottom: -54px;
+    z-index: 900;
+}
+
+
+/*** LOGGED IN ***/
+
+div.minha-conta {
+    text-align: left;
+    font-family: Tahoma, Verdana, Segoe, sans-serif;
+    font-size: 9pt;
+    margin: 37px 7px;
+    line-height: 1.4em;
+}
+
+div.minha-conta a {
+    color: inherit;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+div.minha-conta a:hover {
+    text-decoration: underline;
+}
+
+
+/*** MESSAGE ***/
+
+#message {
+    text-align: left;
+    width: 81%;
+    font-family: Tahoma, Verdana, Segoe, sans-serif;
+    font-size: 108%;
+    padding: 1.2em 2.1em;
+    margin: 2em auto;
+    background: #F6F6F6;
+    -webkit-box-shadow: 0 0 7px rgba(100, 100, 100, 0.5);
+    -moz-box-shadow:    0 0 7px rgba(100, 100, 100, 0.5);
+    box-shadow:         0 0 7px rgba(100, 100, 100, 0.5);
+}
+
+#message h1 {
+    font-size: 180%;
+    font-weight: normal;
+    margin: 0.5em 0;
+}
+
+
+/*** FOOTER ***/
+
+#footer {
+    height: 108px;
+    background-color: #faf8f4;
+    background-repeat: repeat-x;
+    background-position: 0 top;
+    background-image: url('footer/bg_footer.png');
+    font-family: Tahoma, Verdana, Segoe, sans-serif;
+    font-size: 9pt;
+    text-align: center;
+    overflow: hidden;
+}
+
+#footer .copyright {
+    padding-top: 0.5em;
+    line-height: 1.2em;
+    color: #4b4b4b;
+}
+
+#footer hr {
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image:  url('footer/separador_footer.png');
+    border: 0;
+    height: 1px;
+    margin: 0.5em 0;
+}
+
+#footer a {
+    color: #9a7a2b;
+    text-decoration: none;
+    display: inline-block;
+    letter-spacing: -1px;
+    width: 120px;
+    margin: 0 15px;
+}
+
+#footer a:hover {
+    text-decoration: underline;
+}
+
+#footer .links {
+    margin-bottom: 0.5em;
+}
+
+#footer .links a:first-child {
+    margin: 0 0 0 30px;
+}
+
+#footer .facebook {
+    display: inline-block;
+    width: 25px;
+    height: 33px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image:  url('footer/facebook_icon.png');
+}
+
+#footer .facebook:hover {
+    background-image:  url('footer/facebook_icon_hover.png');
+}

@@ -1,0 +1,30 @@
+
+<div class="modal-header">
+    <h3>Salvar Produto</h3>
+</div>
+<div class="modal-body">
+    <p>Tem certeza que deseja salvar as alterações feitas ao produto?</p>
+    <p>
+        <label>Nome:</label>
+        <span ng-class="{modificado: produtos.selecionado.form.nome.$dirty }">{{ produtos.selecionado.nome }}</span>
+        <br />
+        <label>Preço:</label>
+        <span ng-class="{modificado: produtos.selecionado.form.preco.$dirty }">{{ produtos.selecionado.preco | currency }}</span> ({{ produtos.selecionado.medida == 'unidade' ? 'a unidade' : 'o kilo' }})
+        <br />
+        <label>Medida:</label>
+        <span ng-class="{modificado: produtos.selecionado.form.medida.$dirty }">{{ produtos.selecionado.medida }}</span>
+        <br />
+        <label>Status:</label>
+        <span ng-class="{modificado: produtos.selecionado.form.ativo.$dirty }">{{ produtos.selecionado.ativo == '1' ? 'disponível' : 'indisponível' }}</span>
+        <br />
+        <label>Tipo:</label>
+        <span ng-class="{modificado: produtos.selecionado.form.encomenda.$dirty }">{{ produtos.selecionado.encomenda == '1' ? 'encomenda' : 'comum' }}</span>
+        <br />
+        <label>Produto Assinável:</label>
+        <span ng-class="{modificado: produtos.selecionado.form.assinavel.$dirty }">{{ produtos.selecionado.assinavel == '1' ? 'sim' : 'não' }}</span>
+    </p>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-primary" ng-click="$close()">Salvar</button>
+    <button class="btn btn-warning" ng-click="$dismiss()">Voltar</button>
+</div>

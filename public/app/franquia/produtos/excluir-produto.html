@@ -1,0 +1,13 @@
+
+<div class="modal-header">
+    <h3>Excluir Produto</h3>
+</div>
+<div class="modal-body">
+    <p>Tem certeza que deseja excluir o produto <span class="modificado">{{ produtos.selecionado.nome }}</span>?</p>
+    <p><b>Atenção</b>: o produto será irreversivelmente removido da loja. Certifique-se de que não haja nenhum pedido já feito que contenha este produto.</p>
+    <p>Você também pode marcar o produto como <b>indisponível</b> ou <b>remover da categoria</b>, ao invés de excluir.</p>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-danger" ng-click="$close()">Excluir</button>
+    <button class="btn btn-warning" ng-click="$dismiss()">Voltar</button>
+</div>

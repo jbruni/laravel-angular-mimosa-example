@@ -1,0 +1,63 @@
+@import '../main.css';
+
+/* DUVIDAS */
+
+#duvidas {
+    font-family: Tahoma, Verdana, Segoe, sans-serif;
+    max-width: 990px;
+    margin: 0px auto 2em;
+    text-align: left;
+    font-size: 10pt;
+}
+
+#duvidas .header {
+    background-image: url('texto_duvidas.png');
+    background-repeat: no-repeat;
+    width: 307px;
+    height: 70px;
+}
+
+#duvidas .pergunta {
+    margin: 0.5em 37px 0px 50px;
+    color: #9a7a2b;
+    cursor: pointer;
+    position: relative;
+}
+
+#duvidas .resposta {
+    margin: 0.5em 37px 1em 50px;
+    color: #212121;
+}
+
+#duvidas .pergunta .setinha {
+    display: inline-block;
+    width: 11px;
+    height: 11px;
+    background-repeat: no-repeat;
+    background-position: 0px -22px;
+    background-image:  url('sprite_setinhas.png');
+    position: absolute;
+    left: -25px;
+    top: 4px;
+}
+
+#duvidas .pergunta:hover .setinha {
+    background-position: 0px -33px;
+}
+
+#duvidas .pergunta .setinha.ativa {
+    background-position: 0px -44px;
+}
+
+#duvidas .pergunta:hover .setinha.ativa {
+    background-position: 0px -55px;
+}
+
+#duvidas .resposta a {
+    color: #9a7a2b;
+    text-decoration: none;
+}
+
+#duvidas .resposta a:hover {
+    text-decoration: underline;
+}

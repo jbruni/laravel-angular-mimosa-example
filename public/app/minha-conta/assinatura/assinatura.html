@@ -1,0 +1,114 @@
+
+<div class="widget ativa" ng-if="assinatura.assinatura_ativa != 1">
+    <p>
+        <div class="checkbox" ng-click="confirmaAtualizarAssinatura('ativar')"></div>
+        <label ng-click="confirmaAtualizarAssinatura('ativar')">Sua assinatura está desativada</label>
+    </p>
+    <p class="texto">Você pode ativar uma assinatura e receber pães fresquinhos diariamente na porta de sua casa. Você define a quantidade de pães, o horário e em quais dias deseja receber.</p>
+</div>
+
+<div class="widget ativa" ng-if="assinatura.assinatura_ativa == 1">
+    <p>
+        <div class="checkbox checked" ng-click="confirmaAtualizarAssinatura('desativar')"></div>
+        <label ng-click="confirmaAtualizarAssinatura('desativar')">Sua assinatura está ativa</label>
+    </p>
+    <p class="texto">Ao desativar sua assinatura você não receberá mais os pães diariamente, porém ainda poderá realizar pedidos avulsos em nossa Loja de Conveniência sempre que desejar.</p>
+</div>
+
+<div class="widget pausa" ng-if="assinatura.pausado != 1">
+    <h2>Pausa nas Entregas <img style="margin: 0px 0px 3px 3px" once-src="asset('minha-conta/assinatura/info.png')" popover-template="{{ asset('minha-conta/assinatura/pausa.html') }}" popover-placement="top" popover-trigger="mouseenter" popover-append-to-body="true" /></h2>
+    <div class="widget-body">
+        <p>Pausar entrega até o dia:</p>
+        <div id="trigger-calendario-pausa" class="calendario pull-left" popover-template="{{ asset('minha-conta/assinatura/calendario-pausa.html') }}" popover-placement="bottom" popover-append-to-body="true">
+            <button ng-if="!assinatura.data_pausado_ate" class="glyphicon glyphicon-calendar"> Selecionar</button>
+            <input ng-if="assinatura.data_pausado_ate" type="text" class="data" readonly value="{{ assinatura.data_pausado_ate | date:'mediumDate' }}" />
+        </div>
+        <button class="btn btn-primary btn-sm pull-right" ng-click="assinatura.data_pausado_ate && confirmaAtualizarAssinatura('pausar')">Ativar Pausa</button>
+   </div>
+</div>
+
+<div class="widget pausa" ng-if="assinatura.pausado == 1">
+    <h2>Pausa nas Entregas <img style="margin: 0px 0px 3px 3px" once-src="asset('minha-conta/assinatura/info.png')" popover-template="{{ asset('minha-conta/assinatura/pausa.html') }}" popover-placement="top" popover-trigger="mouseenter" popover-append-to-body="true" /></h2>
+    <div class="widget-body">
+        <p>Assinatura em pausa até:</p>
+        <div class="calendario">
+            <input type="text" class="data" readonly value="{{ assinatura.data_pausado_ate | date:'mediumDate' }}" />
+            <button class="btn btn-warning btn-sm pull-right" ng-click="confirmaAtualizarAssinatura('despausar')">Terminar Pausa</button>
+        </div>
+   </div>
+</div>
+
+<div class="widget paes">
+    <h2 class="item numero1">Selecione os produtos, a quantidade, o horário e em que dias deseja receber:</h2>
+    <div ng-repeat="(id_produto, produto) in franquia.produtos" class="widget-body">
+        <p>
+            {{ produto.nome }}: <span class="destaque quantidade">{{ assinatura.quantidades[id_produto] ? assinatura.quantidades[id_produto] : 0 }}</span> unidade{{ assinatura.quantidades[id_produto] == 1 ? '' : 's' }}
+            <div slider class="seletor-quantidade" values="0,1,2,3,4,5,6,7,8,9,10,15,20,30,50" positions="0,60,120,180,240,300,360,420,480,547,610,675,739,794,851" ng-model="assinatura.quantidades[id_produto]"></div>
+        </p>
+    </div>
+</div>
+
+<div class="widget horario">
+    <h2 class="item numero2">Selecione uma faixa de horário para receber:</h2>
+    <div class="widget-body">
+        <p>
+            Você definiu seu horário de entrega das
+            <span class="destaque horario">{{ assinatura.horario_inicial }}</span>
+            às
+            <span class="destaque horario">{{ assinatura.horario_final }}</span>.
+        </p>
+        <div slider-range class="seletor-horario" values="{{ franquia.horarios }}" ng-model="assinatura" range="horario_inicial,horario_final" label-image-width="25"></div>
+    </div>
+</div>
+
+<div class="widget dias">
+    <h2 class="item numero3">Selecione quais os dias da semana:</h2>
+    <div class="widget-body">
+        <p>Você pode definir quais dias da semana deseja receber os pãezinhos.</p>
+        <p>
+            Você irá receber <span class="destaque">{{ franquia.opcoes_dias_de_entrega[assinatura.dias_de_entrega] }}</span>.<br />
+            <span style="position:relative; width: 253px; display: inline-block"><select class="pdm-select" ng-model="assinatura.dias_de_entrega" ng-options="value as label for (value, label) in franquia.opcoes_dias_de_entrega"></select></span>
+        </p>
+    </div>
+</div>
+
+<div class="widget resumo">
+    <h2 class="item numero4">Confira o resumo de sua assinatura:</h2>
+    <div class="widget-body clearfix">
+        <div class="left">
+            <p ng-repeat="(id_produto, quantidade) in assinatura.quantidades" ng-show="(quantidade > 0) || (assinaturaOriginal.quantidades[id_produto] > 0)">
+                <span class="item-nome">{{ franquia.produtos[id_produto].nome }}</span>:
+                <span class="original" ng-class="{modificado: mudouQuantidadeItem(id_produto)}">{{ quantidade }}</span>
+            </p>
+            <p>
+                Hor&aacute;rio:
+                <span class="original" ng-class="{modificado: mudouConfig('horario_inicial') || mudouConfig('horario_final')}">das {{ assinatura.horario_inicial }} &agrave;s {{ assinatura.horario_final }}</span>
+            </p>
+            <p>
+                Entrega:
+                <span class="original" ng-class="{modificado: mudouConfig('dias_de_entrega')}">{{ franquia.opcoes_dias_de_entrega[assinatura.dias_de_entrega] }}</span>
+            </p>
+            <p>
+                Status:
+                <span class="original">
+                    <span ng-if="assinatura.assinatura_ativa == 1">{{ assinatura.pausado == 1 ? 'Entregas em pausa' : 'Ativa' }}</span>
+                    <span ng-if="assinatura.assinatura_ativa != 1">Desativada</span>
+                </span>
+            </p>
+        </div>
+        <div class="right">
+            <p>
+                Valor da assinatura, com vencimento<br />
+                previsto para todo dia <span class="destaque">15</span>:
+            </p>
+            <p class="valor"><span class="oportunidade">R$<b ng-bind="assinatura.valor | currency:''">0,00</b></span> mensais</p>
+        </div>
+    </div>
+</div>
+
+<div class="widget actions" ng-show="mudouConfig()" class="animation">
+    <div class="widget-body">
+        <button class="confirmar" ng-click="confirmaAtualizarAssinatura('alterar')">Confirmar Alterações</button>
+        <button class="desfazer" ng-click="desfazAlteracoes()">Desfazer Alterações</button>
+    </div>
+</div>

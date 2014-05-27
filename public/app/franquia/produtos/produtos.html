@@ -1,0 +1,62 @@
+<div class="loja">
+
+<div class="widget produtos">
+    <div class="widget-body">
+        <div class="produto">
+            <p class="img"></p>
+            <form name="novo_produto">
+                <p class="nome"><input type="text" ng-model="produtos.novo.nome" placeholder="Novo produto" /></p>
+                <p class="medida">Medida: <select ng-model="produtos.novo.medida" ng-options="option for option in produtos.opcoes_medida"></select></p>
+                <p class="ipreco">R$ <input type="text" money ng-model="produtos.novo.preco" ng-pattern="/^[0-9]+\,[0-9]{2}$/" /> {{ produtos.novo.medida == 'unidade' ? 'a unidade' : 'o kilo' }}</p>
+                <p class="ativo">Status: <select ng-model="produtos.novo.ativo" ng-options="(option == '1' ? 'disponível' : 'indisponível') for option in produtos.opcoes_ativo"></select></p>
+                <p class="encomenda">Tipo: <select ng-model="produtos.novo.encomenda" ng-options="(option == '1' ? 'encomenda' : 'comum') for option in produtos.opcoes_encomenda"></select></p>
+                <p class="assinavel">
+                    <input type="checkbox" ng-model="produtos.novo.assinavel" ng-true-value="1" ng-false-value="0" />
+                    <label ng-click="produtos.novo.assinavel = (produtos.novo.assinavel == '1' ? '0' : '1')">Produto Assinável</label>
+                </p>
+                <p style="margin-top: 5px"><button class="btn btn-xs btn-success" ng-click="produtos.incluir()">Incluir Produto</button></p>
+            </form>
+        </div>
+        <div class="produto" ng-repeat="prod in produtos.lista" ng-show="filterProdCateg(prod.id_produto)">
+            <form name="edit_produto">
+                <p class="img"><span produto prod-index="{{ $index }}"><img src="/upload/produtos/{{ prod.id_produto }}.png?u={{ prod.u }}" ng-dblclick="uploadImagemDoProduto(prod)" /></span></p>
+                <p class="nome"><input type="text" ng-model="prod.nome" name="nome" /></p>
+                <p class="medida">Medida: <select ng-model="prod.medida" name="medida" ng-options="option for option in produtos.opcoes_medida"></select></p>
+                <p class="ipreco">
+                    R$ <input type="text" money ng-model="prod.preco" name="preco" ng-pattern="/^[0-9]+\,[0-9]{2}$/" /> {{ prod.medida == 'unidade' ? 'a unidade' : 'o kilo' }}
+                    <button ng-show="prod.assinavel == '1'" ng-click="faixasDePreco($index)" class="btn btn-xs btn-info">*</button>
+                </p>
+                <p class="ativo">Status: <select ng-model="prod.ativo" name="ativo" ng-options="(option == '1' ? 'disponível' : 'indisponível') for option in produtos.opcoes_ativo"></select></p>
+                <p class="encomenda">Tipo: <select ng-model="prod.encomenda" name="encomenda" ng-options="(option == '1' ? 'encomenda' : 'comum') for option in produtos.opcoes_encomenda"></select></p>
+                <p class="assinavel">
+                    <input type="checkbox" ng-model="prod.assinavel" name="assinavel" ng-true-value="1" ng-false-value="0" />
+                    <label ng-click="prod.assinavel = (prod.assinavel == '1' ? '0' : '1')">Produto Assinável</label>
+                </p>
+            </form>
+            <p ng-show="categorias.selecionada.id_categoria != 0">
+                <button class="btn btn-xs btn-warning" ng-click="confirmaRemoverDaCategoria(prod, categorias.selecionada)">Remover da Categoria</button>
+            </p>
+            <p>
+                <button class="btn btn-xs btn-success" ng-click="confirmaSalvarProduto(prod, edit_produto)" ng-show="edit_produto.$dirty">Salvar</button>
+                <button class="btn btn-xs btn-danger" ng-click="confirmaExcluirProduto($index)">Excluir</button>
+            </p>
+        </div>
+    </div>
+</div>
+
+<div class="widget categorias">
+    <div>
+        <h2>Categorias:</h2>
+        <p ng-class="{selected: categorias.selecionada.id_categoria == 0}" ng-click="categorias.selecionada = categorias.todas"><em>Todos os Produtos</em></p>
+        <p class="categoria" ng-repeat="cat in categorias.lista" ng-class="{selected: categorias.selecionada.id_categoria == cat.id_categoria, incluido: cat.incluido}" ng-click="categorias.selecionada = cat; categorias.selecionada.index = $index" cat-index="{{ $index }}">{{ cat.nome }}</p>
+        <div style="text-align: center; margin-top: 12px" ng-if="categorias.selecionada.id_categoria > 0"><button class="btn btn-xs btn-danger" ng-click="confirmaExcluirCategoria()">Excluir Categoria<br />Selecionada</button></div>
+        <br />
+        <h2>Nova categoria:</h2>
+        <div class="adicionais">
+            <p><label>Nome:</label> <input type="text" ng-model="categorias.nova.nome" /></p>
+            <p style="text-align: center"><button class="btn btn-xs btn-success" ng-click="categorias.incluir()">Criar Categoria</button></p>
+        </div>
+    </div>
+</div>
+
+</div>

@@ -1,0 +1,88 @@
+
+<h4 ng-if="keys(historico).length < 1">Você ainda não possui pedidos ou faturas no seu histórico.</h4>
+
+<div ng-repeat="fatura in historico" class="widget fatura">
+    <h2 ng-if="fatura.tipo == 'assinatura'">
+        Assinatura de <span class="marcado">{{ fatura.data_inicial }}</span> a <span class="marcado">{{ fatura.data_final }}</span> |
+        Status: <span class="marcado">Fatura {{ fatura.estimativa ? 'Aberta (estimativa)' : 'Fechada, ' }}</span>
+        <span ng-if="!fatura.estimativa && (fatura.quitada != '0')" class="marcado-ok"> Quitada!</span>
+        <span ng-if="!fatura.estimativa && (fatura.quitada == '0')" class="marcado"> Aguardando Pagamento. <a once-href="asset('/boleto/' + fatura.token)" class="btn btn-xs btn-success pull-right">Efetuar Pagamento</a></span>
+    </h2>
+    <h2 ng-if="fatura.tipo == 'pedido'">
+        Pedido avulso - nº <span class="marcado">{{ fatura.pedido.id_pedido }}</span> |
+        Status: <span class="marcado">Fatura Fechada,</span>
+        <span ng-if="fatura.quitada != '0'" class="marcado-ok"> Quitada!</span>
+        <span ng-if="fatura.quitada == '0'" class="marcado"> Aguardando Pagamento. <a once-href="asset('/boleto/' + fatura.token)" class="btn btn-xs btn-success pull-right">Efetuar Pagamento</a></span>
+    </h2>
+    <div class="widget-body">
+        <table>
+            <tbody ng-if="fatura.tipo == 'assinatura'">
+                <tr ng-repeat="parcial in fatura.parciais" ng-class-odd="'cinzinha'">
+                    <td>
+                        Assinatura com entregas {{ parcial.dias_de_entrega }}
+                        <span ng-if="fatura.parciais.length > 1">({{ parcial.data_inicial }} a {{ parcial.data_final }})</span>
+                        <div ng-repeat="item in parcial.quantidades">{{ item.produto }}: {{ item.quantidade }} unidade<span ng-if="item.quantidade != 1">s</span></div>
+                    </td>
+                    <td class="valor">{{ parcial.valor_parcial | currency }}</td>
+                </tr>
+                <tr ng-repeat="pausa in fatura.pausas" ng-class-odd="(fatura.parciais.length % 2) == 0 ? 'cinzinha' : ''" ng-class-even="(fatura.parciais.length % 2) == 1 ? 'cinzinha' : ''">
+                    <td>Pausa na entrega - de {{ pausa.data_inicial }} a {{ pausa.data_final }}</td>
+                    <td class="valor">- {{ pausa.valor_desconto | currency }}</td>
+                </tr>
+                <tr ng-repeat="pedido in fatura.pedidos" ng-class-odd="((fatura.parciais.length + fatura.pausas.length) % 2) == 0 ? 'cinzinha' : ''" ng-class-even="((fatura.parciais.length + fatura.pausas.length) % 2) == 1 ? 'cinzinha' : ''">
+                    <td>
+                        <button class="btn-plus" title="Mostrar pedido" ng-init="detalhes = false" ng-click="detalhes = !detalhes" ng-class="{opened: detalhes}"></button>
+                        <span>
+                            Pedido nº <span class="bind">{{ pedido.id_pedido }}</span>
+                            efetuado no dia <span class="bind">{{ pedido.data_feito }}</span> às <span class="bind">{{ pedido.hora_feito }}</span>
+                            com entrega em <span class="bind">{{ pedido.data_entrega }}</span>
+                        </span>
+                        <div class="item" ng-repeat="item in pedido.itens" ng-show="detalhes" ng-class="{ultimo: $last}">
+                            <span class="bind">{{ item.quantidade }}{{ item.medida == 'grama' ? 'g' : '' }}</span> {{ item.nome }} (<span class="bind">{{ item.total | currency }}</span>)
+                        </div>
+                    </td>
+                    <td class="valor">{{ pedido.total | currency }}</td>
+                </tr>
+            </tbody>
+            <tbody ng-if="fatura.tipo == 'pedido'">
+                <tr>
+                    <td>
+                        <button class="btn-plus" title="Mostrar pedido" ng-init="detalhes = false" ng-click="detalhes = !detalhes" ng-class="{opened: detalhes}"></button>
+                        <span>
+                            Pedido efetuado no dia <span class="bind">{{ fatura.pedido.data_feito }}</span> às <span class="bind">{{ fatura.pedido.hora_feito }}</span>
+                            com entrega em <span class="bind">{{ fatura.pedido.data_entrega }}</span>
+                        </span>
+                        <div class="item" ng-repeat="item in fatura.pedido.itens" ng-show="detalhes" ng-class="{ultimo: $last}">
+                            <span class="bind">{{ item.quantidade }}{{ item.medida == 'grama' ? 'g' : '' }}</span> {{ item.nome }} (<span class="bind">{{ item.total | currency }}</span>)
+                        </div>
+                    </td>
+                    <td class="valor">{{ fatura.pedido.total | currency }}</td>
+                </tr>
+                <tr class="cinzinha">
+                    <td>Taxa de Entrega</td>
+                    <td class="valor">{{ fatura.taxa_de_entrega | currency }}</td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr ng-if="fatura.valor_acrescimo > 0">
+                    <td>Acréscimo:</td>
+                    <td class="valor">{{ fatura.valor_acrescimo | currency }}</td>
+                </tr>
+                <tr ng-if="fatura.valor_desconto > 0">
+                    <td>Desconto:</td>
+                    <td class="valor">- {{ fatura.valor_desconto | currency }}</td>
+                </tr>
+                <tr>
+                    <th>Valor Total:</th>
+                    <th class="valor">{{ fatura.valor_final | currency }}</th>
+                </tr>
+                <tr ng-if="fatura.comentario_franquia">
+                    <td colspan="2" class="comentario">
+                        <strong>Comentário da franquia:</strong><br />
+                        <pre>{{ fatura.comentario_franquia }}</pre>
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,85 @@
+
+<div class="widget resumo">
+    <h2>Resumo</h2>
+    <div class="widget-body">
+        <p>
+            <label>Dias de entrega:</label>
+            <span ng-class="{modificado: mudouConfig('dias_de_entrega')}">{{ opcoes.dias_de_entrega[contrato.dias_de_entrega] }}</span>
+        </p>
+        <p>
+            <label>Hor&aacute;rio de Entrega:</label>
+            <span ng-class="{modificado: mudouConfig('horario_inicial_min') || mudouConfig('horario_final_max')}">das {{ contrato.horario_inicial_min }}am &agrave;s {{ contrato.horario_final_max }}am</span>
+        </p>
+        <p>
+            <label>Taxa de Entrega Mensal:</label>
+            <span ng-class="{modificado: mudouConfig('entrega_mensal')}">{{ contrato.entrega_mensal | currency }}</span>
+        </p>
+        <p>
+            <label>Taxa de Entrega Avulsa:</label>
+            <span ng-class="{modificado: mudouConfig('entrega_avulsa')}">{{ contrato.entrega_avulsa | currency }}</span>
+        </p>
+        <p>
+            <label>Valor Mínimo para Pedido:</label>
+            <span ng-class="{modificado: mudouConfig('pedido_minimo')}">{{ contrato.pedido_minimo | currency }}</span>
+        </p>
+        <p>
+            <label>Horário do Fechamento Diário:</label>
+            <span ng-class="{modificado: mudouConfig('horario_fechamento')}">{{ contrato.horario_fechamento }}:00 hs</span>
+        </p>
+    </div>
+</div>
+
+<div class="widget valores">
+    <h2>Valores</h2>
+    <div class="widget-body">
+        <p>
+            <label>Taxa de Entrega Mensal:</label>
+            R$ <input type="text" money ng-model="contrato.entrega_mensal" />
+        </p>
+        <p>
+            <label>Taxa de Entrega Avulsa:</label>
+            R$ <input type="text" money ng-model="contrato.entrega_avulsa" />
+        </p>
+        <p>
+            <label>Valor Mínimo para Pedido:</label>
+            R$ <input type="text" money ng-model="contrato.pedido_minimo" />
+        </p>
+    </div>
+</div>
+
+<div class="widget dias">
+    <h2>Dias de entrega</h2>
+    <div class="widget-body">
+        <p>As entregas serão feitas:</p>
+        <p style="position: relative"><select class="pdm-select" ng-model="contrato.dias_de_entrega" ng-options="value as label for (value, label) in opcoes.dias_de_entrega"></select></p>
+    </div>
+</div>
+
+<div class="widget horario">
+    <h2>Horário da entrega</h2>
+    <div class="widget-body">
+        <p>
+            O horário de entrega dos pães e produtos vai das
+            <span class="destaque horario">{{ contrato.horario_inicial_min }}am</span>
+            às
+            <span class="destaque horario">{{ contrato.horario_final_max }}am</span>.
+        </p>
+        <div slider-range class="seletor-horario" values="06:00,06:30,07:00,07:30,08:00,08:30,09:00,09:30,10:00,10:30,11:00" ng-model="contrato" range="horario_inicial_min,horario_final_max" label-image-width="25"></div>
+    </div>
+</div>
+
+<div class="widget fechamento">
+    <h2>Horário do fechamento diário</h2>
+    <div class="widget-body">
+        <p>A lista de entrega será gerada às:</p>
+        <p style="position: relative"><select class="pdm-select" ng-model="contrato.horario_fechamento" ng-options="value as label for (value, label) in opcoes.horario_fechamento"></select></p>
+    </div>
+</div>
+
+<div class="widget actions" ng-show="mudouConfig()" class="animation">
+    <h2>&nbsp;</h2>
+    <div class="widget-body">
+        <button class="confirmar" ng-click="confirmaAlterarContrato()">Confirmar Alterações</button>
+        <button class="desfazer" ng-click="desfazAlteracoes()">Desfazer Alterações</button>
+    </div>
+</div>

@@ -1,0 +1,20 @@
+
+<div class="modal-header">
+    <h3>Definir Status do Assinante</h3>
+</div>
+<div class="modal-body">
+    <p>
+        Para definir o status do assinante <span class="modificado">{{ assinante.nome }}</span>,
+        clique no botão correspondente, logo abaixo.
+    </p>
+    <p>
+        Endereço:<br />
+        <span class="modificado">{{ assinante.endereco }}</span>
+    </p>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-success" ng-click="assinante.novoStatus = 'N'; $close()">Entregas Liberadas</button>
+    <button class="btn btn-danger" ng-click="assinante.novoStatus = 'E'; $close()">Em Espera</button>
+    &nbsp; &nbsp; &nbsp;
+    <button class="btn btn-warning" ng-click="$dismiss()">Voltar</button>
+</div>
