@@ -19,8 +19,7 @@ After Mimosa build, with minification and optimization, files are concatenated a
 - `public/mimosa-config.js` contains Mimosa configuration
 - code inside `public/app` contains modularized components: related HTML + CSS + IMAGES + JS files live in the **same** folder - this is the coolest thing about this whole code structure
 
-What Mimosa does
-================
+### What Mimosa does in this project
 
 `mimosa bower` creates a `vendor` folder inside `public/app` and installs **bower dependencies** there (not whole repos, but only the necessary files).
 
