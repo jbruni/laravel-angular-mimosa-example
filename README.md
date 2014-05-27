@@ -37,4 +37,4 @@ It concatenates and minifies the JavaScript files, following `r.js` approach (re
 
 I have **removed** lots of parts of the back-end code (business rules classes, model classes, database migrations) - so it will **not work**! I've only published this repository here to show how I've been doing front-end code. Specifically, the usage of Mimosa as build tool, and the app code structure, with related HTML + CSS + IMAGES + JS grouped together in the same folder, and having the folders organized in a way that makes sense to the application.
 
-
+The full (private) repository works - this web application is actually in production.
