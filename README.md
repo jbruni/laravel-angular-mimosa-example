@@ -14,7 +14,19 @@ After Mimosa build, with minification and optimization, files are concatenated a
 
 - `app` and `bootstrap` folders are Laravel-related (PHP / back-end)
 - [`app/views/layouts`](https://github.com/jbruni/laravel-angular-mimosa-example/tree/master/app/views/layouts) contains the *index.html* template, which is built and delivered by the server-side of the app
-- `public` contains the front-end code, which uses AngularJS in a modular style with AMD / RequireJS
+- `public` is the root of publicly accessible assets, containing the front-end code in the `app`sub-folder, which uses AngularJS in a modular style with AMD / RequireJS
 - `public/bower.json` contains the front-end third-party dependencies (this file is parsed by "mimosa bower", not bower directly)
 - `public/mimosa-config.js` contains Mimosa configuration
 - code inside `public/app` contains modularized components: related HTML + CSS + IMAGES + JS files live in the **same** folder - this is the coolest thing about this whole code structure
+
+What Mimosa does:
+
+`mimosa bower` creates a `vendor` folder inside `public/app` and installs **bower dependencies** there (not whole repos, but only the necessary files).
+
+It inlines **CSS files** from @import clauses, and minifies them.
+
+It concatenates and makes **HTML files available as templates** in JavaScript files.
+
+It just **copies IMAGES** and common assets.
+
+It concatenates and minifies the JavaScript files, following `r.js` approach (requireJS optimization). It parses the code and finds out which JavaScript files are "entry points" ("modules"), and also detects which other specific JavaScript files are called from them (and thus necessary in the optimized "built" file). All this automatically. So, in the end we got **one minified/optimized JAVASCRIPT file** for each "separated single page app" in the project.
