@@ -4,7 +4,7 @@ laravel-angular-mimosa-example
 This is an application which uses:
 
 - **Laravel 4** (PHP framework) for server-side / back-end
-- **AngularJS** for client-side / front-end
+- **AngularJS** (JavaScript framework) for client-side / front-end
 - **RequireJS** / AMD to organize code and lazy load resources (front-end)
 - **Mimosa** as front-end build tool
 
